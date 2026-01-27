@@ -1,0 +1,293 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import PageMeta from "../components/PageMeta.astro";
+import { SITE_TITLE } from "../config";
+---
+
+<PageLayout>
+  <PageMeta title={`Projects | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <!-- Featured Project: The Convenience Trap -->
+    <div class="featured-project mb-12">
+      <h2 class="text-3xl font-bold mb-6">Capstone Project: The Convenience Trap</h2>
+      
+      <!-- Main Capstone Card -->
+      <div class="capstone-card rounded-lg overflow-hidden mb-6">
+        <div class="grid md:grid-cols-[350px_1fr] gap-0">
+          <!-- Visual Side -->
+          <div class="capstone-gradient p-8 flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-7xl mb-4">🔒</div>
+              <h3 class="text-2xl font-bold text-white mb-2">The Convenience Trap</h3>
+              <p class="text-white/90">DCIM Capstone Project</p>
+            </div>
+          </div>
+          
+          <!-- Content Side -->
+          <div class="p-6 bg-bg-body">
+            <p class="text-text-muted mb-6 leading-relaxed">
+              This project explores how convenience influences digital behavior and the choices people make in online spaces. 
+              It is a three-part blog series where I look at behavior, design, and the broader digital world we take part in.
+            </p>
+            
+            <!-- Blog Series Only -->
+            <div>
+              <h3 class="text-sm font-bold mb-2 uppercase tracking-wide blog-series-title">Blog Series</h3>
+              <p class="text-xs text-text-muted mb-3">Three-part series exploring the privacy-convenience tradeoff</p>
+              <div class="space-y-2">
+                <a href="/blog/the-convenience-trap-part-1-why-clicking-accept-isnt-a-fair-choice" class="project-link block text-sm transition-colors">
+                  → Part 1: Why We Trade Privacy for Ease
+                </a>
+                <a href="/blog/the-convenience-trap-part-2-where-we-lose-privacy-without-noticing" class="project-link block text-sm transition-colors">
+                  → Part 2: Where We Lose Privacy Without Noticing
+                </a>
+                <a href="/blog/the-convenience-trap-part-3-how-to-stay-safe-without-giving-up-convenience" class="project-link block text-sm transition-colors">
+                  → Part 3: How to Stay Safe Without Giving Up Convenience
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Embedded Reflection Paper -->
+      <div class="reflection-card rounded-lg">
+        <div class="reflection-header px-6 py-4 rounded-t-lg">
+          <h3 class="font-bold text-lg text-white">Capstone Reflection Paper</h3>
+          <p class="text-sm text-white/90 mt-1">Academic reflection on the research and development process</p>
+        </div>
+        <div class="pdf-container">
+          <iframe 
+            src="/reflection.pdf" 
+            class="w-full" 
+            style="height: 700px; border: none; display: block; background: white;"
+            title="Capstone Reflection Paper"
+            type="application/pdf"
+          >
+            <p style="padding: 20px; color: #000;">Your browser does not support PDFs. <a href="/reflection.pdf" download style="color: #0284c7;">Download the PDF</a>.</p>
+          </iframe>
+          <div class="px-4 py-4 reflection-footer">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-text-heading text-sm">Full academic reflection paper (8 pages)</p>
+              <a href="/reflection.pdf" download="Capstone_Reflection.pdf" class="download-link text-sm font-semibold">
+                ↓ PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multimedia Projects -->
+    <h2 class="text-2xl font-bold mb-6">Multimedia Projects</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- Video 1 -->
+      <div class="media-card rounded-lg overflow-hidden">
+        <div class="media-header px-4 py-3">
+          <h3 class="font-bold text-white">🎥 Video</h3>
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold mb-2 text-text-heading">Inside a Hacker's Mind</h4>
+          <p class="text-sm text-text-muted mb-3">Visual breakdown of social engineering tactics and how to spot scams</p>
+          <a href="/blog/inside-a-hackers-mind-spotting-social-engineering-scams" class="media-link text-sm transition-colors inline-block">
+            Watch Video →
+          </a>
+        </div>
+      </div>
+      
+      <!-- Video 2 -->
+      <div class="media-card rounded-lg overflow-hidden">
+        <div class="media-header px-4 py-3">
+          <h3 class="font-bold text-white">🎥 Video</h3>
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold mb-2 text-text-heading">The Dual Nature of Digital Communication</h4>
+          <p class="text-sm text-text-muted mb-3">Exploring how digital tools connect us while creating new challenges</p>
+          <a href="/blog/the-dual-nature-of-digital-communication" class="media-link text-sm transition-colors inline-block">
+            Watch Video →
+          </a>
+        </div>
+      </div>
+      
+      <!-- Podcast -->
+      <div class="media-card rounded-lg overflow-hidden">
+        <div class="media-header px-4 py-3">
+          <h3 class="font-bold text-white">🎧 Podcast</h3>
+        </div>
+        <div class="p-4">
+          <h4 class="font-semibold mb-2 text-text-heading">Staying Safe Online</h4>
+          <p class="text-sm text-text-muted mb-3">Audio guide to personal cybersecurity awareness and best practices</p>
+          <a href="/blog/final-project-podcast-staying-safe-online" class="media-link text-sm transition-colors inline-block">
+            Listen Now →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  /* Card styles - light mode: subtle shadow, no border; dark mode: cyan border */
+  .capstone-card,
+  .reflection-card,
+  .media-card {
+    /* Light mode: soft shadow, no harsh border */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgb(var(--color-bg-body));
+  }
+
+  /* Dark mode: blue border to match headers */
+  :global(.dark) .capstone-card,
+  :global(.dark) .reflection-card,
+  :global(.dark) .media-card {
+    border: 2px solid #0284c7;
+    box-shadow: 0 0 10px rgba(2, 132, 199, 0.2);
+  }
+
+  /* Capstone gradient - blue tones */
+  .capstone-gradient {
+    background: linear-gradient(to bottom right, #0ea5e9, #0284c7, #0369a1); /* sky-500 -> cyan-600 -> cyan-700 */
+  }
+
+  /* All card headers - matching the gradient colors */
+  .reflection-header,
+  .media-header {
+    background: #0284c7; /* cyan-600 - matches middle of gradient */
+  }
+
+  /* Reflection paper footer */
+  .reflection-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgb(var(--color-bg-body));
+    overflow: visible;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  :global(.dark) .reflection-footer {
+    border-top: 2px solid #0284c7;
+  }
+
+  /* Ensure reflection card doesn't clip */
+  .reflection-card {
+    overflow: visible !important;
+  }
+
+  .pdf-container {
+    overflow: visible;
+  }
+
+  /* Project links - clean underline animation */
+  .project-link {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    position: relative;
+    display: inline-block;
+  }
+
+  .project-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0284c7;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .project-link:hover::after {
+    width: 100%;
+  }
+
+  .project-link:hover {
+    color: #0284c7;
+  }
+
+  /* Download link - styled to match site */
+  .download-link {
+    color: #0284c7;
+    text-decoration: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    position: relative;
+    display: inline-block;
+  }
+
+  .download-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0284c7;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .download-link:hover::after {
+    width: 100%;
+  }
+
+  .download-link:hover {
+    color: #0284c7;
+  }
+
+  /* Dark mode - white text */
+  :global(.dark) .download-link {
+    color: #ffffff;
+  }
+
+  :global(.dark) .download-link:hover {
+    color: #ffffff;
+  }
+
+  /* Media links (Watch Video, Listen Now) - matching blue */
+  .media-link {
+    color: #0284c7;
+    text-decoration: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    position: relative;
+    display: inline-block;
+  }
+
+  .media-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #0284c7;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .media-link:hover::after {
+    width: 100%;
+  }
+
+  .media-link:hover {
+    color: #0284c7;
+  }
+
+  /* Blog Series title - matching blue */
+  .blog-series-title {
+    color: #0284c7;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Remove underlines from all project links
+    const allLinks = document.querySelectorAll('.project-link, .download-btn');
+    allLinks.forEach(link => {
+      link.style.textDecoration = 'none';
+      link.style.borderBottom = 'none';
+      link.style.backgroundImage = 'none';
+      link.style.boxShadow = 'none';
+    });
+  });
+</script>

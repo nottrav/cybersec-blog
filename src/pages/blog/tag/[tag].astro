@@ -1,0 +1,134 @@
+---
+import { readAll } from "../../../lib/markdoc/read";
+import { blog } from "../../../lib/markdoc/frontmatter.schema";
+import PageLayout from "../../../layouts/PageLayout.astro";
+import PageMeta from "../../../components/PageMeta.astro";
+import { SITE_TITLE } from "../../../config";
+
+export async function getStaticPaths() {
+  const posts = await readAll({
+    directory: "blog",
+    frontmatterSchema: blog,
+  });
+
+  const allTags = new Set<string>();
+  posts.forEach((post) => {
+    if (post.frontmatter.tags) {
+      post.frontmatter.tags.forEach((tag: string) => allTags.add(tag));
+    }
+  });
+
+  return Array.from(allTags).map((tag) => {
+    const tagSlug = tag.toLowerCase().replace(/\s+/g, '-');
+    const filteredPosts = posts.filter((post) => 
+      post.frontmatter.tags?.includes(tag)
+    );
+    return {
+      params: { tag: tagSlug },
+      props: { tag, posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+const sortedPosts = posts
+  .filter((p) => p.frontmatter.draft !== true)
+  .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+---
+
+<PageLayout>
+  <PageMeta title={`Tag: ${tag} | ${SITE_TITLE}`} slot="meta" />
+  <section slot="main">
+    <h1 class="text-3xl font-bold mb-2">Posts tagged with "{tag}"</h1>
+    <p class="text-text-muted mb-8">{sortedPosts.length} post{sortedPosts.length !== 1 ? 's' : ''}</p>
+    
+    <ul class="space-y-6">
+      {sortedPosts.map((post) => {
+        const formattedDate = new Date(post.frontmatter.date).toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
+        return (
+          <li class="flex flex-row gap-4 items-start justify-between">
+            <a href={`/blog/${post.slug}`} class="post-link text-accent hover:underline font-medium flex-1">
+              {post.frontmatter.title}
+            </a>
+            <time class="text-text-muted whitespace-nowrap">{formattedDate}</time>
+          </li>
+        );
+      })}
+    </ul>
+    
+    <div class="mt-8">
+      <a href="/blog" class="back-link text-accent hover:underline">← Back to all posts</a>
+    </div>
+  </section>
+</PageLayout>
+
+<style>
+  .post-link {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    position: relative;
+    display: inline-block;
+  }
+  .post-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(var(--color-text-link));
+    transition: width 0.3s ease-in-out;
+  }
+  .post-link:hover::after {
+    width: 100%;
+  }
+  .back-link {
+    text-decoration: none !important;
+    border-bottom: none !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    position: relative;
+    display: inline-block;
+  }
+  .back-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(var(--color-text-link));
+    transition: width 0.3s ease-in-out;
+  }
+  .back-link:hover::after {
+    width: 100%;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const postLinks = document.querySelectorAll('.post-link');
+    postLinks.forEach(link => {
+      link.style.textDecoration = 'none';
+      link.style.borderBottom = 'none';
+      link.style.backgroundImage = 'none';
+      link.style.boxShadow = 'none';
+    });
+    
+    const backLinks = document.querySelectorAll('.back-link');
+    backLinks.forEach(link => {
+      link.style.textDecoration = 'none';
+      link.style.borderBottom = 'none';
+      link.style.backgroundImage = 'none';
+      link.style.boxShadow = 'none';
+    });
+  });
+</script>

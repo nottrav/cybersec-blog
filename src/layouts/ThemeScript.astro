@@ -1,0 +1,25 @@
+---
+/*
+  This is not a layout but just a component that's used in layouts.
+*/
+---
+
+<script is:inline>
+  // Set light mode as default
+  (function () {
+    if (typeof window !== "undefined") {
+      // Always start in light mode
+      const storageTheme = sessionStorage.getItem("theme");
+      
+      if (storageTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.head.children.namedItem("theme-color").content = "#0e141b";
+      } else {
+        // Default to light mode
+        document.documentElement.classList.remove("dark");
+        document.head.children.namedItem("theme-color").content = "#ffffff";
+        sessionStorage.setItem("theme", "light");
+      }
+    }
+  })();
+</script>

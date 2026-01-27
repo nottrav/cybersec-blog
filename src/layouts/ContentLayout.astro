@@ -1,0 +1,125 @@
+---
+/* 
+  This layout is used in pages that render markdoc content
+  - pages/blog/[slug].astro
+*/
+
+// Import the global.css file here so that it is included on
+import "../styles/global.css";
+
+import GoogleFont from "./GoogleFont.astro";
+import FontAwesome from "./FontAwesome.astro";
+import ThemeScript from "./ThemeScript.astro";
+import Favicon from "./Favicon.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+export interface Props {
+  title: string;
+  date: Date;
+  tags?: string[];
+}
+
+const { title, date, tags } = Astro.props;
+const formattedDate = new Date(date).toLocaleDateString("en-us", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+});
+---
+
+<!DOCTYPE html>
+<html class="theme-sleek" lang="en">
+  <head>
+    <!-- Global Metadata -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="Blogster" />
+    <Favicon />
+    <slot name="meta" />
+    <GoogleFont />
+    <ThemeScript />
+    <FontAwesome />
+  </head>
+
+  <body
+    class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8"
+  >
+    <Header />
+    <main id="main">
+      <section class="blog-post prose max-w-none prose-sleek">
+        <h1 class="m-0 mb-[0.25em]">{title}</h1>
+        <time class="block mb-[1em] text-text-muted">{formattedDate}</time>
+      </section>
+      {tags && tags.length > 0 && (
+        <div class="tags-container flex flex-wrap gap-2 mb-[2em] -mt-4">
+          {tags.map((tag) => (
+            <span class="inline-block border border-accent text-accent hover:border-accent-2 hover:text-accent-2 px-2 py-0.5 rounded text-xs font-medium transition-colors uppercase tracking-wide">
+              <a href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag-link">
+                {tag}
+              </a>
+            </span>
+          ))}
+        </div>
+      )}
+      <section class="blog-post prose max-w-none prose-sleek">
+        <slot name="content" />
+      </section>
+    </main>
+    <Footer />
+    <style>
+      body {
+        display: grid;
+        grid-template-areas:
+          "header"
+          "main"
+          "footer";
+        grid-template-rows: 5rem minmax(0, 1fr) 5rem;
+        grid-template-columns: minmax(0, 1fr);
+      }
+      main {
+        grid-area: main;
+      }
+      .tags-container span {
+        cursor: pointer;
+      }
+      .tags-container span:hover {
+        border-color: rgb(var(--color-primary-main));
+        color: rgb(var(--color-primary-main));
+      }
+      .tag-link {
+        text-decoration: none !important;
+        border-bottom: none !important;
+        color: inherit;
+      }
+      .tag-link:hover {
+        text-decoration: none !important;
+        border-bottom: none !important;
+        color: inherit;
+      }
+      /* Nuclear option */
+      a.tag-link,
+      a.tag-link:hover,
+      a.tag-link:visited,
+      a.tag-link:active,
+      a.tag-link:focus {
+        text-decoration: none !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+        background-image: none !important;
+      }
+    </style>
+    <script>
+      // Remove any underlines that CSS can't kill
+      document.addEventListener('DOMContentLoaded', () => {
+        const tagLinks = document.querySelectorAll('.tag-link');
+        tagLinks.forEach(link => {
+          link.style.textDecoration = 'none';
+          link.style.borderBottom = 'none';
+          link.style.backgroundImage = 'none';
+          link.style.boxShadow = 'none';
+        });
+      });
+    </script>
+  </body>
+</html>

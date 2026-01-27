@@ -1,0 +1,68 @@
+---
+---
+
+<section class="mt-12 mb-8">
+  <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+  <p class="mb-6">
+    Interested in connecting? Feel free to reach out through the form below or connect with me on social media.
+  </p>
+  
+  <form 
+    name="contact" 
+    method="POST" 
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    class="space-y-4 max-w-2xl"
+  >
+    <input type="hidden" name="form-name" value="contact" />
+    
+    <!-- Honeypot field for spam protection -->
+    <div class="hidden">
+      <label>
+        Don't fill this out if you're human: <input name="bot-field" />
+      </label>
+    </div>
+    
+    <div>
+      <label for="name" class="block mb-2 font-semibold">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-main"
+      />
+    </div>
+    
+    <div>
+      <label for="email" class="block mb-2 font-semibold">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-main"
+      />
+    </div>
+    
+    <div>
+      <label for="message" class="block mb-2 font-semibold">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="5"
+        required
+        class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-main"
+      ></textarea>
+    </div>
+    
+    <div>
+      <button
+        type="submit"
+        class="px-6 py-3 bg-gradient-to-r from-[#0284c7] to-[#06b6d4] dark:from-[#24d3ee] dark:to-[#22d3ee] text-white font-semibold rounded-md hover:opacity-90 transition-opacity"
+      >
+        Send Message
+      </button>
+    </div>
+  </form>
+</section>
