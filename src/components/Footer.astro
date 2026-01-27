@@ -2,6 +2,28 @@
 ---
 
 <footer class="text-sm leading-[1.75] mt-4">
+  <!-- Social icons - mobile only -->
+  <div class="sm:hidden flex justify-center gap-6 mb-4">
+    <a
+      class="unset text-2xl hover:text-text-link"
+      href="https://github.com/nottrav"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fa-brands fa-github" aria-hidden="true" title="Travis McGhee on GitHub"></i>
+      <span class="sr-only">Travis McGhee on GitHub</span>
+    </a>
+    <a
+      class="unset text-2xl hover:text-text-link"
+      href="https://www.linkedin.com/in/travismcghee/"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="fa-brands fa-linkedin" aria-hidden="true" title="Travis McGhee on LinkedIn"></i>
+      <span class="sr-only">Travis McGhee on LinkedIn</span>
+    </a>
+  </div>
+  
   <div>
     This blog is built with 
     <a
@@ -24,6 +46,7 @@
     grid-area: footer;
     text-align: center;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
