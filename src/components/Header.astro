@@ -11,11 +11,11 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     Skip to content
   </a>
   <nav>
-    <section class="text-text-bold flex items-center gap-4">
-      <a href="/" class="unset">
-        <img src="/images/Site_Logo.png" alt="Site Logo" class="h-16 w-auto" />
+    <section class="text-text-bold flex items-center gap-2 sm:gap-4">
+      <a href="/" class="unset flex-shrink-0">
+        <img src="/images/Site_Logo.png" alt="Site Logo" class="h-10 sm:h-16 w-auto" />
       </a>
-      <ul class="unset flex gap-4 [&>li]:p-0">
+      <ul class="unset flex gap-2 sm:gap-4 [&>li]:p-0 text-sm sm:text-base">
         <li><HeaderLink href="/">Home</HeaderLink></li>
         <li><HeaderLink href="/blog">Blog</HeaderLink></li>
         <li><HeaderLink href="/projects">Projects</HeaderLink></li>
@@ -23,7 +23,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     </section>
   </nav>
   <div
-    class="max-[375px]:hidden justify-self-end py-2 flex items-center content-center text-text-bold"
+    class="hidden sm:flex justify-self-end py-2 items-center content-center text-text-bold"
   >
     <a
       class="unset text-xl ml-4 hover:text-text-link"
