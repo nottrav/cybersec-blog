@@ -1,0 +1,34 @@
+---
+export interface Props {
+  href: string;
+  title?: string;
+}
+
+const { href, title } = Astro.props;
+
+// Check if link is external (starts with http/https and not your domain)
+const isExternal = href.startsWith('http') && !href.includes('travismcghee.space');
+---
+
+{isExternal ? (
+  <a href={href} title={title} target="_blank" rel="noopener noreferrer" class="external-link">
+    <slot />
+    <i class="fa-solid fa-up-right-from-square external-icon" aria-hidden="true"></i>
+  </a>
+) : (
+  <a href={href} title={title}>
+    <slot />
+  </a>
+)}
+
+<style>
+  .external-link {
+    white-space: nowrap;
+  }
+  .external-icon {
+    font-size: 0.7em;
+    margin-left: 0.25em;
+    opacity: 0.7;
+    vertical-align: super;
+  }
+</style>
