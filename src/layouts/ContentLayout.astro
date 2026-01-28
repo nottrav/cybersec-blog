@@ -18,9 +18,10 @@ export interface Props {
   title: string;
   date: Date;
   tags?: string[];
+  readingTime?: number;
 }
 
-const { title, date, tags } = Astro.props;
+const { title, date, tags, readingTime } = Astro.props;
 const formattedDate = new Date(date).toLocaleDateString("en-us", {
   year: "numeric",
   month: "short",
@@ -51,7 +52,15 @@ const formattedDate = new Date(date).toLocaleDateString("en-us", {
     <main id="main">
       <section class="blog-post prose max-w-none prose-sleek">
         <h1 class="m-0 mb-[0.25em]">{title}</h1>
-        <time class="block mb-[1em] text-text-muted">{formattedDate}</time>
+        <div class="flex items-center gap-3 mb-[1em] text-text-muted">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+          {readingTime && (
+            <>
+              <span>•</span>
+              <span>{readingTime} min read</span>
+            </>
+          )}
+        </div>
       </section>
       {tags && tags.length > 0 && (
         <div class="tags-container flex flex-wrap gap-2 mb-[2em] -mt-4">

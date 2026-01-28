@@ -27,11 +27,15 @@ if (typeof slug !== "string") {
   throw Error(`slug should be string. Received: ${slug}`);
 }
 
-const { content, frontmatter } = await readOne({
+const { content, frontmatter, rawContent } = await readOne({
   directory: "blog",
   slug,
   frontmatterSchema: blog,
 });
+
+// Calculate reading time (average 200 words per minute)
+const words = rawContent?.split(/\s+/).length || 0;
+const readingTime = Math.max(1, Math.ceil(words / 200));
 
 const ogImageAbsoluteUrl =
   frontmatter.external !== true && frontmatter.ogImagePath
@@ -39,7 +43,7 @@ const ogImageAbsoluteUrl =
     : undefined;
 ---
 
-<ContentLayout title={frontmatter.title} date={frontmatter.date} tags={frontmatter.tags}>
+<ContentLayout title={frontmatter.title} date={frontmatter.date} tags={frontmatter.tags} readingTime={readingTime}>
   <BlogPostMeta
     title={frontmatter.title}
     description={frontmatter.external ? undefined : frontmatter.description}
