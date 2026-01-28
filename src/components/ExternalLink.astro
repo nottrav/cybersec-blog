@@ -23,7 +23,22 @@ const isExternal = href.startsWith('http') && !href.includes('travismcghee.space
 
 <style>
   .external-link {
-    white-space: nowrap;
+    position: relative;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  .external-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(var(--color-text-link));
+    transition: width 0.3s ease-in-out;
+  }
+  .external-link:hover::after {
+    width: 100%;
   }
   .external-icon {
     font-size: 0.7em;
