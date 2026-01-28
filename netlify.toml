@@ -1,0 +1,23 @@
+# netlify.toml
+# Safe defaults for Astro + Netlify (Free)
+
+# Block common WordPress attack vectors
+[[redirects]]
+  from = "/wp-*"
+  to = "/404"
+  status = 410
+
+[[redirects]]
+  from = "/xmlrpc.php"
+  to = "/404"
+  status = 410
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-XSS-Protection = "1; mode=block"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
