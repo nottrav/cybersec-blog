@@ -4,7 +4,6 @@
 export const SITE_TITLE = "Travis McGhee";
 export const SITE_DESCRIPTION =
   "IT Graduate exploring Cybersecurity. I write about digital privacy, online safety, and the ever-evolving tech landscape.";
-export const TWITTER_HANDLE = "@travismcghee";
 export const MY_NAME = "Travis McGhee";
 
 // setup in astro.config.mjs
