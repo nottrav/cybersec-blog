@@ -11,7 +11,7 @@ const isExternal = href.startsWith('http') && !href.includes('travismcghee.space
 ---
 
 {isExternal ? (
-  <a href={href} title={title} target="_blank" rel="noopener noreferrer" class="external-link">
+  <a href={href} title={title} target="_blank" rel="noopener noreferrer" class="external-link unset">
     <slot />
     <i class="fa-solid fa-up-right-from-square external-icon" aria-hidden="true"></i>
   </a>
@@ -24,8 +24,9 @@ const isExternal = href.startsWith('http') && !href.includes('travismcghee.space
 <style>
   .external-link {
     position: relative;
-    text-decoration: none;
-    border-bottom: none;
+    text-decoration: none !important;
+    background-image: none !important;
+    color: rgb(var(--color-text-link));
   }
   .external-link::after {
     content: '';
