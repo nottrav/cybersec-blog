@@ -4,7 +4,6 @@ import {
   SITE_TITLE,
   SITE_DESCRIPTION,
   SITE_URL,
-  TWITTER_HANDLE,
 } from "../config";
 
 export interface Props {
@@ -19,11 +18,9 @@ const { meta, og, twitter } = getPageMeta({
   description: description || SITE_DESCRIPTION,
   baseUrl: SITE_URL,
   ogImageAbsoluteUrl: `${SITE_URL}/images/og.png`,
-  ogImageAltText: "My fancy website",
+  ogImageAltText: "Travis McGhee - Cybersecurity Blog",
   ogImageWidth: 1200,
   ogImageHeight: 630,
-  siteOwnerTwitterHandle: TWITTER_HANDLE,
-  contentAuthorTwitterHandle: TWITTER_HANDLE,
 });
 ---
 
@@ -49,12 +46,6 @@ const { meta, og, twitter } = getPageMeta({
     <meta property="twitter:description" content={twitter.description} />
   )
 }
-{twitter.site && <meta property="twitter:site" content={twitter.site} />}
-{
-  twitter.creator && (
-    <meta property="twitter:creator" content={twitter.creator} />
-  )
-}
 <meta property="twitter:card" content="summary_large_image" />
 {twitter.image && <meta property="twitter:image" content={twitter.image} />}
 {
@@ -62,4 +53,3 @@ const { meta, og, twitter } = getPageMeta({
     <meta property="twitter:image:alt" content={twitter.imageAlt} />
   )
 }
-<!-- {twitter.url && <meta property="twitter:url" content={twitter.url} />} -->
