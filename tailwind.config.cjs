@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Open Sans", "sans-serif"],
-        heading: ["Open Sans", "sans-serif"],
+        body: ["Nunito", "sans-serif"],
+        heading: ["Nunito", "sans-serif"],
       },
       colors: {
         transparent: "transparent",
