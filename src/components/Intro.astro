@@ -3,18 +3,81 @@ import { SITE_TITLE } from "../config";
 ---
 
 <section id="intro" class="intro">
-  <h1>Travis McGhee</h1>
-  <p class="subhead">Rutgers University Graduate | B.S. Information Technology and Informatics<br>Minor in Digital Communication, Information, and Media</p>
-  <p class="roles">Seeking: SOC Analyst • Security Analyst • Cloud Security Associate • Junior Detection Engineer • Threat Intelligence Analyst</p>
+  <h1 class="name-gradient">Travis McGhee</h1>
+  
+  <p class="subhead">
+    <strong>Rutgers University Graduate</strong> | B.S. Information Technology and Informatics<br>
+    Minor in Digital Communication, Information, and Media
+  </p>
+  
+  <p class="roles">
+    <strong>Seeking:</strong> SOC Analyst • Security Analyst • Cloud Security Associate • Junior Detection Engineer • Threat Intelligence Analyst
+  </p>
 
-  <p class="intro">Hello! I'm Travis, a recent Rutgers graduate focused on cybersecurity with a real interest in the investigative side of information security. Coursework centered on networking, information security, data analytics, and information privacy, giving me a strong foundation in how systems work and how to protect them.</p>
+  <p>
+    Hello! I'm Travis, a recent Rutgers graduate focused on <strong>cybersecurity</strong> with a real interest in the investigative side of information security. Coursework centered on networking, information security, data analytics, and information privacy, giving me a strong foundation in how systems work and how to protect them.
+  </p>
 
-  <p>Through academic projects I've gained hands-on experience with object-oriented programming in Java and Python, database management and design, and data visualization using Tableau. Outside the classroom I run a Raspberry Pi with Pi-hole for network-wide DNS filtering and traffic monitoring, providing practical exposure to Linux system administration and log-driven troubleshooting.</p>
+  <p>
+    Through academic projects I've gained hands-on experience with <strong>object-oriented programming</strong> in Java and Python, <strong>database management</strong> and design, and <strong>data visualization</strong> using Tableau. Outside the classroom I run a <strong>Raspberry Pi with Pi-hole</strong> for network-wide DNS filtering and traffic monitoring, providing practical exposure to Linux system administration and log-driven troubleshooting.
+  </p>
 
-  <p>I'm drawn to roles that involve threat detection, security event monitoring, and protecting systems from evolving threats. Whether analyzing logs, identifying suspicious activity, or contributing to incident response workflows, I'm eager to join a team where I can apply what I've learned while continuing to grow in threat hunting, automation scripting, and cloud security. While cybersecurity is my primary focus, I'm also interested in roles involving system administration, cloud infrastructure, or IT operations where I can build a strong technical foundation.</p>
+  <p>
+    I'm drawn to roles that involve <strong>threat detection</strong>, <strong>security event monitoring</strong>, and protecting systems from evolving threats. Whether analyzing logs, identifying suspicious activity, or contributing to incident response workflows, I'm eager to join a team where I can apply what I've learned while continuing to grow in threat hunting, automation scripting, and cloud security. While cybersecurity is my primary focus, I'm also interested in roles involving system administration, cloud infrastructure, or IT operations where I can build a strong technical foundation.
+  </p>
 
-  <p>I recently rebuilt this site from WordPress to Astro and Netlify for speed and simplicity. If you're looking for someone curious, committed, and ready to tackle new challenges in cybersecurity, let's connect.</p>
+  <p>
+    I recently rebuilt this site from WordPress to <strong>Astro</strong> and <strong>Netlify</strong> for speed and simplicity. If you're looking for someone curious, committed, and ready to tackle new challenges in cybersecurity, let's connect.
+  </p>
 
   <h2>Get In Touch</h2>
-  <p>Feel free to reach out via LinkedIn or use the contact form below. Always happy to connect and learn something new.</p>
+  <p>
+    Feel free to reach out via <a href="https://www.linkedin.com/in/travismcghee/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or use the contact form below. Always happy to connect and learn something new.
+  </p>
 </section>
+
+<style>
+  .intro {
+    margin-bottom: 2rem;
+  }
+
+  .name-gradient {
+    background: linear-gradient(135deg, #0ea5e9, #0284c7, #0369a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  .subhead {
+    color: rgb(var(--color-text-muted));
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .roles {
+    color: rgb(var(--color-text-link));
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    background: rgb(var(--color-bg-code) / 0.3);
+    border-radius: 0.5rem;
+    border-left: 3px solid rgb(var(--color-text-link));
+  }
+
+  h2 {
+    color: rgb(var(--color-text-heading));
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+  }
+</style>
