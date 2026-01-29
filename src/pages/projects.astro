@@ -57,18 +57,16 @@ import { SITE_TITLE } from "../config";
           <p class="text-sm text-white/90 mt-1">Academic reflection on the research and development process</p>
         </div>
         <div class="pdf-container">
-          <iframe 
-            id="pdf-embed"
-            src="https://mozilla.github.io/pdf.js/web/viewer.html?file=https://travismcghee.space/Capstone_Reflection.pdf" 
+          <embed 
+            src="/Capstone_Reflection.pdf#toolbar=1&navpanes=0&scrollbar=1" 
+            type="application/pdf"
             class="w-full"
-            style="height: 700px; border: none; display: block; background: white;"
+            style="height: 700px; display: block;"
             title="Capstone Reflection Paper"
-            loading="lazy"
-          ></iframe>
-          <div class="px-4 py-3 reflection-footer text-center">
-            <a href="/Capstone_Reflection.pdf" target="_blank" class="download-link text-sm">Can't see the PDF? Open it here →</a>
+          />
+          <div class="px-4 py-3 text-center border-t border-gray-200 dark:border-gray-700">
+            <p class="text-text-muted text-sm">Full academic reflection (8 pages) — <a href="/Capstone_Reflection.pdf" target="_blank" class="download-link">Open in new tab ↗</a></p>
           </div>
-
         </div>
       </div>
     </div>
