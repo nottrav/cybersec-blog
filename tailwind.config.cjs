@@ -31,6 +31,10 @@ module.exports = {
         border: {
           code: "rgb(var(--color-border-code) / <alpha-value>)",
         },
+        accent: {
+          DEFAULT: "rgb(var(--color-primary-main) / <alpha-value>)",
+          2: "rgb(var(--color-text-link) / <alpha-value>)",
+        },
       },
       typography: (theme) => ({
         DEFAULT: {
@@ -98,8 +102,8 @@ module.exports = {
             "--tw-prose-hr": "rgb(var(--color-text-muted))",
             "--tw-prose-quotes": "rgb(var(--color-text-body))",
             "--tw-prose-quote-borders": "rgb(var(--color-primary-main))",
-            "--tw-prose-captions": "rgb(var(--color-primary-heading))",
-            "--tw-prose-quote-captions": "rgb(var(--color-primary-heading))",
+            "--tw-prose-captions": "rgb(var(--color-text-heading))",
+            "--tw-prose-quote-captions": "rgb(var(--color-text-heading))",
             "--tw-prose-code": "rgb(var(--color-text-code))",
             "--tw-prose-pre-code": "rgb(var(--color-text-code))",
             "--tw-prose-pre-bg": "rgb(var(--color-bg-code))",
