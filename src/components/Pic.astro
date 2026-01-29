@@ -1,5 +1,0 @@
----
-import { Picture } from 'astro:assets';
-const { src, alt, ...props } = Astro.props;
----
-<Picture src={src} alt={alt} formats={['avif','webp','png']} loading="lazy" decoding="async" {...props} />
