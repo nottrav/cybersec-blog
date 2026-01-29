@@ -36,4 +36,17 @@ export default defineConfig({
       config: { applyBaseStyles: false },
     }),
   ],
+  build: {
+    inlineStylesheets: 'auto',
+  },
+  vite: {
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: undefined,
+        },
+      },
+    },
+  },
 });
