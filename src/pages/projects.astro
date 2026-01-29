@@ -57,27 +57,14 @@ import { SITE_TITLE } from "../config";
           <p class="text-sm text-white/90 mt-1">Academic reflection on the research and development process</p>
         </div>
         <div class="pdf-container">
-          <div id="pdf-loading" class="pdf-loading">
-            <div class="loading-spinner"></div>
-            <p>Loading PDF...</p>
-          </div>
-          <object 
-            data="/Capstone_Reflection.pdf" 
-            type="application/pdf"
-            class="w-full pdf-object"
-            style="height: 700px; display: block; background: white;"
+          <iframe 
+            id="pdf-embed"
+            src="https://docs.google.com/viewer?url=https://travismcghee.space/Capstone_Reflection.pdf&embedded=true" 
+            class="w-full"
+            style="height: 700px; border: none; display: block; background: white;"
             title="Capstone Reflection Paper"
-          >
-            <div class="pdf-fallback">
-              <p class="mb-4">Your browser doesn't support embedded PDFs.</p>
-              <a href="/Capstone_Reflection.pdf" target="_blank" class="fallback-btn mr-4">
-                📄 Open PDF in New Tab
-              </a>
-              <a href="/Capstone_Reflection.pdf" download="Capstone_Reflection.pdf" class="fallback-btn">
-                ⬇ Download PDF
-              </a>
-            </div>
-          </object>
+            loading="lazy"
+          ></iframe>
           <div class="px-4 py-4 reflection-footer">
             <div class="flex items-center justify-between gap-2">
               <p class="text-text-heading text-sm">Full academic reflection paper (8 pages)</p>
@@ -294,90 +281,4 @@ import { SITE_TITLE } from "../config";
   .blog-series-title {
     color: #0284c7;
   }
-
-  /* PDF loading indicator */
-  .pdf-loading {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: rgb(var(--color-text-muted));
-    z-index: 1;
-  }
-
-  .pdf-container {
-    position: relative;
-  }
-
-  .loading-spinner {
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(2, 132, 199, 0.2);
-    border-top-color: #0284c7;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 10px;
-  }
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
-  .pdf-object {
-    position: relative;
-    z-index: 2;
-  }
-
-  /* PDF fallback styling */
-  .pdf-fallback {
-    padding: 40px 20px;
-    text-align: center;
-    background: rgb(var(--color-bg-code) / 0.3);
-    border-radius: 0.5rem;
-    margin: 20px;
-  }
-
-  .fallback-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #0284c7;
-    color: white !important;
-    border-radius: 6px;
-    text-decoration: none !important;
-    font-weight: 600;
-    transition: opacity 0.2s;
-  }
-
-  .fallback-btn:hover {
-    opacity: 0.9;
-  }
 </style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Remove underlines from all project links
-    const allLinks = document.querySelectorAll('.project-link, .download-btn');
-    allLinks.forEach(link => {
-      link.style.textDecoration = 'none';
-      link.style.borderBottom = 'none';
-      link.style.backgroundImage = 'none';
-      link.style.boxShadow = 'none';
-    });
-
-    // Hide loading indicator when PDF loads
-    const pdfObject = document.querySelector('.pdf-object') as HTMLObjectElement;
-    const loadingIndicator = document.getElementById('pdf-loading');
-    
-    if (pdfObject && loadingIndicator) {
-      pdfObject.addEventListener('load', () => {
-        loadingIndicator.style.display = 'none';
-      });
-      
-      // Fallback: hide loading after timeout
-      setTimeout(() => {
-        loadingIndicator.style.display = 'none';
-      }, 3000);
-    }
-  });
-</script>
