@@ -1,4 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'image_optim', '~> 0.31'
-gem 'jekyll-webp'
