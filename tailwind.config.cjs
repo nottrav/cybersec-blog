@@ -5,9 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Geist Sans", "sans-serif"],
-        heading: ["Geist Sans", "sans-serif"],
-        mono: ["Geist Mono", "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", "monospace"],
+        body: ["GeistWeb", "sans-serif"],
+        heading: ["GeistWeb", "sans-serif"],
+        mono: ["GeistMonoWeb", "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", "monospace"],
       },
       colors: {
         transparent: "transparent",

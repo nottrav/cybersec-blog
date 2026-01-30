@@ -1,31 +1,61 @@
 ---
 /*
-  Loading Geist Sans from CDN for main font
+  Self-hosted Geist fonts for compatibility with Zen & Safari-iOS
 */
 ---
 
-<!-- Preload Geist Sans font for better performance -->
-<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.0/files/geist-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Preload Regular weights for better performance -->
+<link rel="preload" href="/fonts/geist/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/geist/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
 
 <style is:global>
-  /* Geist Sans from CDN */
+  /* GeistWeb Sans - Self-hosted */
   @font-face {
-    font-family: 'Geist Sans';
+    font-family: 'GeistWeb';
     font-style: normal;
     font-display: swap;
     font-weight: 400;
-    src: url(https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.0/files/geist-sans-latin-400-normal.woff2) format('woff2'),
-         url(https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.0/files/geist-sans-all-400-normal.woff) format('woff');
-    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    src: url('/fonts/geist/Geist-Regular.woff2') format('woff2');
   }
   
   @font-face {
-    font-family: 'Geist Sans';
+    font-family: 'GeistWeb';
     font-style: normal;
     font-display: swap;
-    font-weight: 600;
-    src: url(https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.0/files/geist-sans-latin-600-normal.woff2) format('woff2'),
-         url(https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.0/files/geist-sans-all-600-normal.woff) format('woff');
-    unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+    font-weight: 500;
+    src: url('/fonts/geist/Geist-Medium.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-family: 'GeistWeb';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url('/fonts/geist/Geist-Bold.woff2') format('woff2');
+  }
+
+  /* GeistMonoWeb - Self-hosted */
+  @font-face {
+    font-family: 'GeistMonoWeb';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('/fonts/geist/GeistMono-Regular.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-family: 'GeistMonoWeb';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url('/fonts/geist/GeistMono-Medium.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-family: 'GeistMonoWeb';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url('/fonts/geist/GeistMono-Bold.woff2') format('woff2');
   }
 </style>
