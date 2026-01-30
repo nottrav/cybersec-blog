@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ["Nunito", "sans-serif"],
-        heading: ["Nunito", "sans-serif"],
+        body: ["Geist Sans", "sans-serif"],
+        heading: ["Geist Sans", "sans-serif"],
         mono: ["Geist Mono", "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono", "monospace"],
       },
       colors: {
