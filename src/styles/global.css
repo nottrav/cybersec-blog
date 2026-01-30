@@ -111,16 +111,28 @@
         just add a class `unset` to it. 
     */
     a:not(.unset) {
+        position: relative;
         text-decoration: none;
-        background-repeat: no-repeat;
-        background-size: 100% 1.5px;
-        background-position: 0 100%;
-        background-image:
-            linear-gradient(to right, theme('colors.text.link'), theme('colors.text.link'));
+        color: inherit;
+    }
+
+    a:not(.unset)::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: currentColor;
+        transition: width 0.3s ease;
     }
 
     a:not(.unset):hover {
         color: theme('colors.text.link');
+    }
+
+    a:not(.unset):hover::after {
+        width: 100%;
     }
 
     code:not(pre code):not(.unset) {
