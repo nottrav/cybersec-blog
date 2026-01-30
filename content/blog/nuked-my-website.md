@@ -15,7 +15,7 @@ Started looking at alternatives that night. Landed on Astro and Netlify. Static 
 
 ## The Migration Became a Redesign
 
-The migration became a redesign. Cleaner type, a dark mode toggle for the night owls. Gave my Convenience Trap series, three posts on how frictionless tech quietly costs us privacy, a home that loads in under a second.
+Somewhere between tearing down the old structure and building the new one, the project turned into a full redesign. Cleaner typography, a dark mode toggle for the night owls, and pages that actually load in under a second. No compromises.
 
 ## The Real Pain
 
