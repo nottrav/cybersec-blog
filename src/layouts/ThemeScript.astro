@@ -13,8 +13,10 @@
     const themeColorMetaTag = document.head.querySelector(
       'meta[name="theme-color"]'
     );
-    const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")
-      ?.matches;
+    const mediaQuery = window.matchMedia
+      ? window.matchMedia("(prefers-color-scheme: dark)")
+      : null;
+    const prefersDark = mediaQuery ? mediaQuery.matches : false;
     const storedTheme = localStorage.getItem("theme");
 
     const applyTheme = (theme) => {
@@ -33,15 +35,19 @@
 
     applyTheme(initialTheme);
 
-    if (!storedTheme && window.matchMedia) {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      mediaQuery.addEventListener("change", (event) => {
+    if (!storedTheme && mediaQuery) {
+      const handleChange = (event) => {
         if (localStorage.getItem("theme")) {
           return;
         }
         const nextTheme = event.matches ? "dark" : "light";
         applyTheme(nextTheme);
-      });
+      };
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener("change", handleChange);
+      } else if (mediaQuery.addListener) {
+        mediaQuery.addListener(handleChange);
+      }
     }
 
     window.addEventListener("pageshow", () => {

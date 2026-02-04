@@ -195,6 +195,7 @@
         position: relative;
         box-decoration-break: clone;
         text-decoration: none;
+        display: inline-block;
     }
 
     .animated-link:hover:after {
