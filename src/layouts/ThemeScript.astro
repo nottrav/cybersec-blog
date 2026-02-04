@@ -10,21 +10,29 @@
       return;
     }
 
+    const themeColorMetaTag = document.head.querySelector(
+      'meta[name="theme-color"]'
+    );
     const mediaQuery = window.matchMedia?.("(prefers-color-scheme: dark)") ?? null;
     const prefersDark = mediaQuery?.matches ?? false;
     const readStoredTheme = () => {
       const stored = localStorage.getItem("theme");
       return stored === "light" || stored === "dark" ? stored : null;
     };
-    const storedTheme = readStoredTheme();
-        if (readStoredTheme()) {
-      const currentTheme = readStoredTheme();
-      if (currentTheme) {
+    const applyTheme = (theme) => {
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+        if (themeColorMetaTag) {
+          themeColorMetaTag.content = "#0e141b";
+        }
       } else {
-        applyTheme(mediaQuery?.matches ? "dark" : "light");
-        themeColorMetaTag.content = theme === "dark" ? "#0e141b" : "#ffffff";
+        document.documentElement.classList.remove("dark");
+        if (themeColorMetaTag) {
+          themeColorMetaTag.content = "#ffffff";
+        }
       }
     };
+    const storedTheme = readStoredTheme();
 
     const initialTheme =
       storedTheme === "light" || storedTheme === "dark"
