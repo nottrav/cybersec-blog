@@ -42,9 +42,9 @@
   }
   function updateStorageTheme(mode: "light" | "dark") {
     if (mode === "dark") {
-      sessionStorage.setItem("theme", "dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      sessionStorage.setItem("theme", "light");
+      localStorage.setItem("theme", "light");
     }
   }
   class ModeToggle extends HTMLElement {
@@ -61,6 +61,9 @@
         if (currentMode === "dark") {
           iconElem.classList.remove("light");
           iconElem.classList.add("dark");
+        }
+        if (toggle) {
+          toggle.setAttribute("aria-checked", currentMode === "dark");
         }
 
         // we load the toggle invisible to prevent flash
@@ -83,6 +86,9 @@
             updateHTMLTheme(modeToSwitch);
             updateStorageTheme(modeToSwitch);
             currentMode = modeToSwitch;
+          }
+          if (toggle) {
+            toggle.setAttribute("aria-checked", currentMode === "dark");
           }
 
           // prevent slide animation on page load for dark mode

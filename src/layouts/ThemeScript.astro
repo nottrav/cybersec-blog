@@ -5,21 +5,49 @@
 ---
 
 <script is:inline>
-  // Set light mode as default
   (function () {
-    if (typeof window !== "undefined") {
-      // Always start in light mode
-      const storageTheme = sessionStorage.getItem("theme");
-      
-      if (storageTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        document.head.children.namedItem("theme-color").content = "#0e141b";
-      } else {
-        // Default to light mode
-        document.documentElement.classList.remove("dark");
-        document.head.children.namedItem("theme-color").content = "#ffffff";
-        sessionStorage.setItem("theme", "light");
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const themeColorMetaTag = document.head.querySelector(
+      'meta[name="theme-color"]'
+    );
+    const storedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")
+      ?.matches;
+    const initialTheme =
+      storedTheme === "light" || storedTheme === "dark"
+        ? storedTheme
+        : prefersDark
+          ? "dark"
+          : "light";
+
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      if (themeColorMetaTag) {
+        themeColorMetaTag.content = "#0e141b";
       }
+    } else {
+      document.documentElement.classList.remove("dark");
+      if (themeColorMetaTag) {
+        themeColorMetaTag.content = "#ffffff";
+      }
+    }
+
+    if (!storedTheme && window.matchMedia) {
+      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      mediaQuery.addEventListener("change", (event) => {
+        if (localStorage.getItem("theme")) {
+          return;
+        }
+        const nextTheme = event.matches ? "dark" : "light";
+        document.documentElement.classList.toggle("dark", nextTheme === "dark");
+        if (themeColorMetaTag) {
+          themeColorMetaTag.content =
+            nextTheme === "dark" ? "#0e141b" : "#ffffff";
+        }
+      });
     }
   })();
 </script>
