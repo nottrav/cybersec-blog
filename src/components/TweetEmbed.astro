@@ -17,6 +17,32 @@ const { url } = Astro.props;
     <a class="unset absolute left-0 top-0" href={url}>Loading embedded tweet...</a>
   </blockquote>
 </div>
+<script is:inline>
+  const htmlElement = document.documentElement;
+  const globalWindow = window;
+  const setTweetTheme = () => {
+    const theme = htmlElement.classList.contains("dark") ? "dark" : "light";
+    document.querySelectorAll("blockquote.twitter-tweet").forEach((tweet) => {
+      tweet.setAttribute("data-theme", theme);
+    });
+    if (window.twttr?.widgets) {
+      window.twttr.widgets.load();
+    }
+  };
+
+  setTweetTheme();
+
+  if (!globalWindow.__tweetThemeObserver) {
+    const observer = new MutationObserver(() => {
+      setTweetTheme();
+    });
+    observer.observe(htmlElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+    globalWindow.__tweetThemeObserver = observer;
+  }
+</script>
 <script
   async
   defer
