@@ -9,9 +9,9 @@ const toggleVariants = cva(
   {
     variants: {
       size: {
-        default: "h-9 w-9",
-        sm: "h-8 w-8",
-        lg: "h-10 w-10",
+        default: "h-10 w-10",
+        sm: "h-9 w-9",
+        lg: "h-11 w-11",
       },
     },
     defaultVariants: {

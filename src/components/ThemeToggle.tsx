@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Moon, Sun } from "lucide-react"
 
+import { cn } from "@/lib/utils"
 import { Toggle } from "@/components/ui/toggle"
 
 const THEME_KEY = "theme"
@@ -21,7 +22,7 @@ function applyTheme(mode: ThemeMode) {
   }
 }
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ className }: { className?: string }) {
   const [isDark, setIsDark] = React.useState(false)
 
   React.useEffect(() => {
@@ -43,8 +44,8 @@ export default function ThemeToggle() {
   return (
     <Toggle
       aria-label="Toggle dark mode"
-      className="ml-4"
-      size="sm"
+      className={cn(className)}
+      size="default"
       pressed={isDark}
       onPressedChange={(pressed) => {
         const next: ThemeMode = pressed ? "dark" : "light"
