@@ -6,28 +6,39 @@ import { SITE_TITLE } from "../config";
   <h1 class="name-gradient">Travis McGhee</h1>
   
   <p class="subhead">
-    <strong>Rutgers University Graduate</strong> | B.S. Information Technology and Informatics<br>
-    Minor in Digital Communication, Information, and Media
+    <span>Rutgers University Graduate | B.S. Information Technology and Informatics</span>
+    <span>Minor in Digital Communication, Information, and Media</span>
   </p>
+
+  <p class="focus-areas">Focus areas: IT security, privacy, networking, cloud, and data analytics.</p>
   
-  <p class="roles">
-    <strong>Seeking:</strong> SOC Analyst • Security Analyst • Cloud Security Associate • Junior Detection Engineer • Threat Intelligence Analyst
+  <div class="roles">
+    <span class="roles-label">Seeking:</span>
+    <ul class="role-list">
+      <li>SOC Analyst (Tier 1)</li>
+      <li>Security Analyst (Entry-Level)</li>
+      <li>IT Support (Entry-Level)</li>
+      <li>Junior Cloud/Systems</li>
+      <li>Threat Intelligence (Entry-Level)</li>
+    </ul>
+  </div>
+
+  <h2>About</h2>
+  <p>
+    Hey, I'm Travis, a recent Rutgers grad who is into the investigative side of cybersecurity. I like digging into how systems break, how attackers think, and what logs can tell you when something feels off.
   </p>
 
   <p>
-    Hello! I'm Travis, a recent Rutgers graduate focused on <strong>cybersecurity</strong> with a real interest in the investigative side of information security. Coursework centered on networking, information security, data analytics, and information privacy, giving me a strong foundation in how systems work and how to protect them.
+    Most of my coursework was around networking, security, data analytics, and privacy, which gave me a solid base to build on. I've worked on projects in Java and Python, built and managed databases, and used Tableau for data viz. Outside class, I run a Raspberry Pi with Pi-hole at home so I can tinker with DNS filtering and see what is actually moving across my network.
+  </p>
+
+  <h2>What I'm Looking For</h2>
+  <p>
+    I'm drawn to roles that involve threat detection, security event monitoring, and protecting systems from evolving threats. Whether analyzing logs, identifying suspicious activity, or contributing to incident response workflows, I want to join a team where I can apply what I've learned and keep growing in threat hunting, automation scripting, and cloud security. While cybersecurity is my primary focus, I'm also open to roles in system administration, cloud infrastructure, or IT operations where I can build a strong technical foundation.
   </p>
 
   <p>
-    Through academic projects I've gained hands-on experience with <strong>object-oriented programming</strong> in Java and Python, <strong>database management</strong> and design, and <strong>data visualization</strong> using Tableau. Outside the classroom I run a <strong>Raspberry Pi with Pi-hole</strong> for network-wide DNS filtering and traffic monitoring, providing practical exposure to Linux system administration and log-driven troubleshooting.
-  </p>
-
-  <p>
-    I'm drawn to roles that involve <strong>threat detection</strong>, <strong>security event monitoring</strong>, and protecting systems from evolving threats. Whether analyzing logs, identifying suspicious activity, or contributing to incident response workflows, I'm eager to join a team where I can apply what I've learned while continuing to grow in threat hunting, automation scripting, and cloud security. While cybersecurity is my primary focus, I'm also interested in roles involving system administration, cloud infrastructure, or IT operations where I can build a strong technical foundation.
-  </p>
-
-  <p>
-    I recently rebuilt this site from WordPress to <strong>Astro</strong> and <strong>Netlify</strong> for speed and simplicity. If you're looking for someone curious, committed, and ready to tackle new challenges in cybersecurity, let's connect.
+    I rebuilt this site from WordPress to Astro and Netlify for speed and simplicity. If you're looking for someone curious, steady, and ready to learn fast, I'd love to connect.
   </p>
 </section>
 
@@ -53,6 +64,16 @@ import { SITE_TITLE } from "../config";
     line-height: 1.6;
   }
 
+  .subhead span {
+    display: block;
+  }
+
+  .focus-areas {
+    color: rgb(var(--color-text-muted));
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
   .roles {
     color: rgb(var(--color-text-link));
     font-size: 0.95rem;
@@ -61,6 +82,30 @@ import { SITE_TITLE } from "../config";
     background: rgb(var(--color-bg-code) / 0.3);
     border-radius: 0.5rem;
     border-left: 3px solid rgb(var(--color-text-link));
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    align-items: center;
+  }
+
+  .roles-label {
+    font-weight: 600;
+  }
+
+  .role-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .role-list li {
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: rgb(var(--color-bg-code) / 0.25);
+    border: 1px solid rgb(var(--color-border-code) / 0.5);
   }
 
   h2 {
@@ -74,5 +119,6 @@ import { SITE_TITLE } from "../config";
   p {
     margin-bottom: 1rem;
     line-height: 1.75;
+    max-width: 65ch;
   }
 </style>
