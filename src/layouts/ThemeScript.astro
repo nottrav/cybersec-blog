@@ -7,30 +7,36 @@
 <script is:inline>
   // Set initial mode based on stored preference or system setting
   (function () {
-    if (typeof window !== "undefined") {
+    try {
+      if (typeof window === "undefined") return;
       const themeColorMeta = document.querySelector('meta[name="theme-color"]');
       const storedTheme = localStorage.getItem("theme");
+      const savedMode =
+        storedTheme === "dark" || storedTheme === "light" || storedTheme === "system"
+          ? storedTheme
+          : "system";
       const prefersDark = window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-      const initialTheme =
-        storedTheme === "dark" || storedTheme === "light"
-          ? storedTheme
-          : prefersDark
+      const effectiveTheme =
+        savedMode === "system"
+          ? prefersDark
             ? "dark"
-            : "light";
+            : "light"
+          : savedMode;
 
-      if (initialTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        if (themeColorMeta) themeColorMeta.content = "#201b25";
-      } else {
-        document.documentElement.classList.remove("dark");
-        if (themeColorMeta) themeColorMeta.content = "#f2ebfa";
+      document.documentElement.classList.toggle("dark", effectiveTheme === "dark");
+      document.documentElement.dataset.theme = savedMode;
+      if (themeColorMeta) {
+        themeColorMeta.content =
+          effectiveTheme === "dark" ? "#201b25" : "#f2ebfa";
       }
 
-      if (!storedTheme) {
-        localStorage.setItem("theme", initialTheme);
+      if (!storedTheme || storedTheme !== savedMode) {
+        localStorage.setItem("theme", savedMode);
       }
+    } catch (e) {
+      // no-op
     }
   })();
 </script>
