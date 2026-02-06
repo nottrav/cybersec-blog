@@ -16,7 +16,7 @@ const controlClass =
   <nav class="flex flex-wrap items-center justify-between gap-x-6 sm:gap-x-8 gap-y-2">
     <section class="text-text-bold flex items-center gap-2 sm:gap-4 min-w-0">
       <a href="/" class="unset flex-shrink-0">
-        <img src="/images/Site_Logo.png" alt="Site Logo" class="h-10 sm:h-16 w-auto" width="64" height="64" />
+        <img src="/images/Site_Logo.png" alt="Site Logo" class="h-9 sm:h-14 w-auto" width="64" height="64" />
       </a>
       <ul class="unset flex gap-2 sm:gap-4 [&>li]:p-0 text-sm sm:text-base">
         <li><HeaderLink href="/">Home</HeaderLink></li>
@@ -51,7 +51,7 @@ const controlClass =
           title="Travis McGhee on LinkedIn"></i>
         <span class="sr-only">Travis McGhee on LinkedIn</span>
       </a>
-      <ThemeToggle className={controlClass} client:load />
+      <ThemeToggle className={`${controlClass} opacity-85 hover:opacity-100`} client:load />
     </div>
   </nav>
 </header>
