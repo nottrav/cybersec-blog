@@ -94,14 +94,17 @@ import { SITE_TITLE } from "../config";
   }
 
   .role-list {
-    display: inline;
+    display: inline-flex;
+    flex-wrap: wrap;
+    column-gap: 0;
+    row-gap: 0.25rem;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
   .role-list li {
-    display: inline;
+    display: inline-flex;
   }
 
   .role-list li + li::before {
