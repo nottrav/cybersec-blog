@@ -18,14 +18,14 @@ import { SITE_TITLE } from "../config";
           <div class="capstone-gradient p-8 flex items-center justify-center">
             <div class="text-center">
               <div class="text-7xl mb-4">🔒</div>
-              <h3 class="text-2xl font-bold text-white mb-2">The Convenience Trap</h3>
-              <p class="text-white/90">DCIM Capstone Project</p>
+              <h3 class="text-2xl font-bold text-text-heading mb-2">The Convenience Trap</h3>
+              <p class="text-text-body">DCIM Capstone Project</p>
             </div>
           </div>
           
           <!-- Content Side -->
-          <div class="p-6 bg-bg-body">
-            <p class="text-text-muted mb-6 leading-relaxed">
+          <div class="capstone-content p-6 bg-bg-body">
+            <p class="text-text-body mb-6 leading-relaxed">
               This project explores how convenience influences digital behavior and the choices people make in online spaces. 
               It is a three-part blog series where I look at behavior, design, and the broader digital world we take part in.
             </p>
@@ -33,7 +33,7 @@ import { SITE_TITLE } from "../config";
             <!-- Blog Series Only -->
             <div>
               <h3 class="text-sm font-bold mb-2 uppercase tracking-wide blog-series-title">Blog Series</h3>
-              <p class="text-xs text-text-muted mb-3">Three-part series exploring the privacy-convenience tradeoff</p>
+              <p class="text-xs text-text-body mb-3">Three-part series exploring the privacy-convenience tradeoff</p>
               <div class="space-y-2">
                 <a href="/blog/the-convenience-trap-part-1-why-clicking-accept-isnt-a-fair-choice" class="project-link block text-sm transition-colors">
                   → Part 1: Why We Trade Privacy for Ease
@@ -72,7 +72,7 @@ import { SITE_TITLE } from "../config";
 
     <!-- Multimedia Projects -->
     <h2 class="text-2xl font-bold mb-6">Multimedia Projects</h2>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="projects-grid grid md:grid-cols-3 gap-6">
       <!-- Video 1 -->
       <div class="media-card rounded-lg overflow-hidden">
         <div class="media-header px-4 py-3">
@@ -80,7 +80,7 @@ import { SITE_TITLE } from "../config";
         </div>
         <div class="p-4">
           <h4 class="font-semibold mb-2 text-text-heading">Inside a Hacker's Mind</h4>
-          <p class="text-sm text-text-muted mb-3">Visual breakdown of social engineering tactics and how to spot scams</p>
+          <p class="text-sm text-text-body mb-3">Visual breakdown of social engineering tactics and how to spot scams</p>
           <a href="/blog/inside-a-hackers-mind-spotting-social-engineering-scams" class="media-link text-sm transition-colors inline-block">
             Watch Video →
           </a>
@@ -94,7 +94,7 @@ import { SITE_TITLE } from "../config";
         </div>
         <div class="p-4">
           <h4 class="font-semibold mb-2 text-text-heading">The Dual Nature of Digital Communication</h4>
-          <p class="text-sm text-text-muted mb-3">Exploring how digital tools connect us while creating new challenges</p>
+          <p class="text-sm text-text-body mb-3">Exploring how digital tools connect us while creating new challenges</p>
           <a href="/blog/the-dual-nature-of-digital-communication" class="media-link text-sm transition-colors inline-block">
             Watch Video →
           </a>
@@ -108,7 +108,7 @@ import { SITE_TITLE } from "../config";
         </div>
         <div class="p-4">
           <h4 class="font-semibold mb-2 text-text-heading">Staying Safe Online</h4>
-          <p class="text-sm text-text-muted mb-3">Audio guide to personal cybersecurity awareness and best practices</p>
+          <p class="text-sm text-text-body mb-3">Audio guide to personal cybersecurity awareness and best practices</p>
           <a href="/blog/final-project-podcast-staying-safe-online" class="media-link text-sm transition-colors inline-block">
             Listen Now →
           </a>
@@ -119,45 +119,97 @@ import { SITE_TITLE } from "../config";
 </PageLayout>
 
 <style>
+  section {
+    margin-top: 1.5rem;
+  }
+
+  .featured-project {
+    margin-bottom: 2.5rem;
+  }
+
+  .projects-grid {
+    gap: 1.25rem;
+  }
+
   /* Card styles - light mode: subtle shadow, no border; dark mode: cyan border */
   .capstone-card,
   .reflection-card,
   .media-card {
-    /* Light mode: soft shadow, no harsh border */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    background: rgb(var(--color-bg-body));
+    box-shadow: 0 1px 3px rgb(var(--color-bg-body) / 0.4), 0 1px 2px rgb(var(--color-bg-body) / 0.25);
+    border: 1px solid rgb(var(--color-text-link) / 0.5);
+    background: rgb(var(--color-bg-code));
   }
 
-  /* Dark mode: blue border to match headers */
+  :global(.theme-sleek:not(.dark)) .capstone-card,
+  :global(.theme-sleek:not(.dark)) .reflection-card,
+  :global(.theme-sleek:not(.dark)) .media-card {
+    box-shadow: 0 6px 16px rgb(var(--color-text-body) / 0.08);
+    border: 1px solid rgb(var(--color-text-link) / 0.35);
+  }
+
   :global(.dark) .capstone-card,
   :global(.dark) .reflection-card,
   :global(.dark) .media-card {
-    border: 2px solid #0284c7;
-    box-shadow: 0 0 10px rgba(2, 132, 199, 0.2);
+    border: 2px solid rgb(var(--color-text-link));
+    box-shadow: 0 0 14px rgb(var(--color-text-link) / 0.18);
   }
 
-  /* Capstone gradient - blue tones */
   .capstone-gradient {
-    background: linear-gradient(to bottom right, #0ea5e9, #0284c7, #0369a1); /* sky-500 -> cyan-600 -> cyan-700 */
+    background: linear-gradient(
+      to bottom right,
+      rgb(var(--color-bg-body)),
+      rgb(var(--color-bg-code))
+    );
+    border-right: 1px solid rgb(var(--color-text-link) / 0.5);
   }
 
-  /* All card headers - matching the gradient colors */
   .reflection-header,
   .media-header {
-    background: #0284c7; /* cyan-600 - matches middle of gradient */
+    background: rgb(var(--color-bg-code));
+    border-bottom: 1px solid rgb(var(--color-text-link) / 0.5);
+  }
+
+  .reflection-header h3,
+  .media-header h3 {
+    color: rgb(var(--color-text-heading));
+  }
+
+  :global(.dark) .reflection-header h3,
+  :global(.dark) .media-header h3 {
+    color: rgb(var(--color-text-body));
+  }
+
+  .capstone-gradient h3 {
+    color: rgb(var(--color-text-link));
+  }
+
+  .capstone-gradient p {
+    color: rgb(var(--color-text-body));
+  }
+
+  .capstone-gradient .text-7xl {
+    margin-bottom: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .capstone-content {
+    background: rgb(var(--color-bg-code));
   }
 
   /* Reflection paper footer */
   .reflection-footer {
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgb(var(--color-bg-body));
+    border-top: 1px solid rgb(var(--color-text-link) / 0.5);
+    background: rgb(var(--color-bg-code));
     overflow: visible;
     border-radius: 0 0 0.5rem 0.5rem;
   }
 
+  :global(.theme-sleek:not(.dark)) .reflection-footer {
+    border-top: 1px solid rgb(var(--color-text-link) / 0.35);
+  }
+
   :global(.dark) .reflection-footer {
-    border-top: 2px solid #0284c7;
+    border-top: 2px solid rgb(var(--color-text-link));
   }
 
   /* Ensure reflection card doesn't clip */
@@ -186,7 +238,7 @@ import { SITE_TITLE } from "../config";
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #0284c7;
+    background-color: rgb(var(--color-text-link));
     transition: width 0.3s ease-in-out;
   }
 
@@ -195,12 +247,12 @@ import { SITE_TITLE } from "../config";
   }
 
   .project-link:hover {
-    color: #0284c7;
+    color: rgb(var(--color-text-link));
   }
 
   /* Download link - styled to match site */
   .download-link {
-    color: #0284c7;
+    color: rgb(var(--color-text-link));
     text-decoration: none !important;
     background-image: none !important;
     box-shadow: none !important;
@@ -215,7 +267,7 @@ import { SITE_TITLE } from "../config";
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #0284c7;
+    background-color: rgb(var(--color-text-link));
     transition: width 0.3s ease-in-out;
   }
 
@@ -224,21 +276,20 @@ import { SITE_TITLE } from "../config";
   }
 
   .download-link:hover {
-    color: #0284c7;
+    color: rgb(var(--color-text-link));
   }
 
-  /* Dark mode - white text */
   :global(.dark) .download-link {
-    color: #ffffff;
+    color: rgb(var(--color-text-link));
   }
 
   :global(.dark) .download-link:hover {
-    color: #ffffff;
+    color: rgb(var(--color-text-link));
   }
 
   /* Media links (Watch Video, Listen Now) - matching blue */
   .media-link {
-    color: #0284c7;
+    color: rgb(var(--color-text-link));
     text-decoration: none !important;
     background-image: none !important;
     box-shadow: none !important;
@@ -253,7 +304,7 @@ import { SITE_TITLE } from "../config";
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #0284c7;
+    background-color: rgb(var(--color-text-link));
     transition: width 0.3s ease-in-out;
   }
 
@@ -262,11 +313,12 @@ import { SITE_TITLE } from "../config";
   }
 
   .media-link:hover {
-    color: #0284c7;
+    color: rgb(var(--color-text-link));
   }
 
-  /* Blog Series title - matching blue */
   .blog-series-title {
-    color: #0284c7;
+    color: rgb(var(--color-text-link));
+    letter-spacing: 0.12em;
+    font-size: 0.72rem;
   }
 </style>

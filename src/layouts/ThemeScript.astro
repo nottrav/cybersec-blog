@@ -9,7 +9,7 @@
   (function () {
     if (typeof window !== "undefined") {
       const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-      const storedTheme = sessionStorage.getItem("theme");
+      const storedTheme = localStorage.getItem("theme");
       const prefersDark = window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches;
 
@@ -22,14 +22,14 @@
 
       if (initialTheme === "dark") {
         document.documentElement.classList.add("dark");
-        if (themeColorMeta) themeColorMeta.content = "#0e141b";
+        if (themeColorMeta) themeColorMeta.content = "#201b25";
       } else {
         document.documentElement.classList.remove("dark");
-        if (themeColorMeta) themeColorMeta.content = "#ffffff";
+        if (themeColorMeta) themeColorMeta.content = "#f2ebfa";
       }
 
       if (!storedTheme) {
-        sessionStorage.setItem("theme", initialTheme);
+        localStorage.setItem("theme", initialTheme);
       }
     }
   })();

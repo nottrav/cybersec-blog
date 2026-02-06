@@ -1,6 +1,6 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
-import DarkModeToggle from "./DarkModeToggle.astro";
+import ThemeToggle from "./ThemeToggle";
 ---
 
 <header>
@@ -23,10 +23,10 @@ import DarkModeToggle from "./DarkModeToggle.astro";
     </section>
   </nav>
   <div
-    class="hidden sm:flex justify-self-end py-2 items-center content-center text-text-bold"
+    class="header-icons hidden sm:flex justify-self-end py-2 items-center content-center"
   >
     <a
-      class="unset text-xl ml-4 hover:text-text-link"
+      class="unset icon-link ml-4"
       href="https://github.com/nottrav"
       target="_blank"
       rel="noopener noreferrer"
@@ -38,7 +38,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
       <span class="sr-only">Travis McGhee on GitHub</span>
     </a>
     <a
-      class="unset text-xl ml-4 hover:text-text-link"
+      class="unset icon-link ml-4"
       href="https://www.linkedin.com/in/travismcghee/"
       target="_blank"
       rel="noopener noreferrer"
@@ -50,7 +50,7 @@ import DarkModeToggle from "./DarkModeToggle.astro";
       <span class="sr-only">Travis McGhee on LinkedIn</span>
     </a>
   </div>
-  <DarkModeToggle />
+  <ThemeToggle client:load />
 </header>
 <style>
   header {
@@ -61,5 +61,23 @@ import DarkModeToggle from "./DarkModeToggle.astro";
         0,
         max-content
       );
+  }
+
+  .header-icons .icon-link {
+    color: rgb(var(--color-text-body));
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .header-icons .icon-link:hover {
+    color: rgb(var(--color-text-link));
+  }
+
+  :global(.dark) .header-icons .icon-link {
+    color: rgb(var(--color-text-body));
+  }
+
+  :global(.dark) .header-icons .icon-link:hover {
+    color: rgb(var(--color-text-link));
   }
 </style>

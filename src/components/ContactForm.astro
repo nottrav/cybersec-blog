@@ -69,3 +69,39 @@
     </div>
   </form>
 </section>
+
+<style>
+  form input,
+  form textarea {
+    background-color: rgb(var(--color-bg-code));
+    border-color: rgb(var(--color-text-link) / 0.5);
+    color: rgb(var(--color-text-body));
+  }
+
+  form input::placeholder,
+  form textarea::placeholder {
+    color: rgb(var(--color-text-muted));
+  }
+
+  form input:focus,
+  form textarea:focus {
+    outline: none;
+    border-color: rgb(var(--color-text-link));
+    box-shadow: 0 0 0 2px rgb(var(--color-text-link) / 0.25);
+  }
+
+  form button[type="submit"] {
+    background: rgb(var(--color-text-link));
+    border: 1px solid rgb(var(--color-text-link));
+    color: rgb(var(--color-bg-body));
+    box-shadow: none;
+  }
+
+  form button[type="submit"]:hover {
+    background: rgb(var(--color-text-link) / 0.9);
+  }
+
+  form button[type="submit"]:active {
+    background: rgb(var(--color-text-link) / 0.85);
+  }
+</style>
