@@ -14,7 +14,7 @@ import { SITE_TITLE } from "../config";
   
   <div class="roles">
     <span class="roles-label">Seeking:</span>
-    <ul class="role-list">
+    <ul class="role-list unset">
       <li>SOC Analyst (Tier 1)</li>
       <li>Security Analyst (Entry-Level)</li>
       <li>IT Support (Entry-Level)</li>
@@ -75,13 +75,13 @@ import { SITE_TITLE } from "../config";
   }
 
   .roles {
-    color: rgb(var(--color-text-link));
+    color: rgb(var(--color-text-body));
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     padding: 0.5rem 0.75rem;
     background: transparent;
     border-radius: 0.5rem;
-    border-left: 2px solid rgb(var(--color-text-link));
+    border-left: 2px solid rgb(var(--color-border-code) / 0.35);
     display: flex;
     flex-wrap: wrap;
     gap: 0.35rem 0.5rem;
@@ -90,6 +90,7 @@ import { SITE_TITLE } from "../config";
 
   .roles-label {
     font-weight: 600;
+    color: rgb(var(--color-text-link));
   }
 
   .role-list {
