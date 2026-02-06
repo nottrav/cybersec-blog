@@ -3,6 +3,9 @@
   "compilerOptions": {
     "types": ["astro/client"],
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "strict": true,
     "skipLibCheck": true
   }
