@@ -2,298 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-    Tailwind colors listed here: https://tailwindcss.com/docs/customizing-colors
-    
-    Why colors are written in rgb format (255 255 255) instead of hex (#ffffff)
-    https://tailwindcss.com/docs/customizing-colors#using-css-variables 
-*/
-@layer base {
-
-    /* light theme */
-    .theme-sleek {
-        /* Primary accent #b12471 */
-        --color-primary-main: 177 36 113;
-
-        /* Primary text #492c61 */
-        --color-text-body: 73 44 97;
-        /* Primary text #492c61 */
-        --color-text-heading: 73 44 97;
-        /* Primary text #492c61 */
-        --color-text-bold: 73 44 97;
-        /* Primary text #492c61 */
-        --color-text-muted: 73 44 97;
-        /* Accent pink text #b12471 */
-        --color-text-link: 177 36 113;
-        /* Primary text #492c61 */
-        --color-text-code: 73 44 97;
-        /* Primary text #492c61 */
-        --color-text-selection: 73 44 97;
-
-        /* Background #f9f3f9 */
-        --color-bg-body: 249 243 249;
-        /* Panel background #f3e6f4 */
-        --color-bg-code: 243 230 244;
-        /* Highlight #f5dbef */
-        --color-bg-selection: 245 219 239;
-
-        /* Accent pink #b12471 */
-        --color-border-code: 177 36 113;
-
-    }
-
-    /* dark theme */
-    .theme-sleek.dark {
-        /* Primary accent #dc749e */
-        --color-primary-main: 220 116 158;
-
-        /* Primary text #f2ebfa */
-        --color-text-body: 242 235 250;
-        /* Primary text #f2ebfa */
-        --color-text-heading: 242 235 250;
-        /* Primary text #f2ebfa */
-        --color-text-bold: 242 235 250;
-        /* Primary text #f2ebfa */
-        --color-text-muted: 242 235 250;
-        /* Primary accent #dc749e */
-        --color-text-link: 220 116 158;
-        /* Primary text #f2ebfa */
-        --color-text-code: 242 235 250;
-        /* Background #201b25 */
-        --color-text-selection: 32 27 37;
-
-        /* Background #201b25 */
-        --color-bg-body: 32 27 37;
-        /* Panel background #160e14 */
-        --color-bg-code: 22 14 20;
-        /* Primary accent #dc749e */
-        --color-bg-selection: 220 116 158;
-
-        /* Primary accent #dc749e */
-        --color-border-code: 220 116 158;
-    }
-
-    :root {
-        font-family: theme('fontFamily.body');
-        background-color: theme('colors.bg.body');
-        color: theme('colors.text.body');
-        /* base font-size 1px larger for better visibility */
-        font-size: 1.0625em;
-        line-height: 1.75;
-        scroll-behavior: smooth;
-        --background: 300, 33.3%, 96.5%;
-        --foreground: 272.8, 37.6%, 27.6%;
-        --card: 295.7, 38.9%, 92.9%;
-        --card-foreground: 272.8, 37.6%, 27.6%;
-        --popover: 295.7, 38.9%, 92.9%;
-        --popover-foreground: 272.8, 37.6%, 27.6%;
-        --primary: 327.2, 66.2%, 41.8%;
-        --primary-foreground: 300, 33.3%, 96.5%;
-        --secondary: 295.7, 38.9%, 92.9%;
-        --secondary-foreground: 272.8, 37.6%, 27.6%;
-        --muted: 313.8, 56.5%, 91%;
-        --muted-foreground: 272.8, 37.6%, 27.6%;
-        --accent: 313.8, 56.5%, 91%;
-        --accent-foreground: 327.2, 66.2%, 41.8%;
-        --destructive: 327.2, 66.2%, 41.8%;
-        --destructive-foreground: 300, 33.3%, 96.5%;
-        --border: 327.2, 66.2%, 41.8%;
-        --input: 327.2, 66.2%, 41.8%;
-        --ring: 327.2, 66.2%, 41.8%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: theme('fontFamily.heading');
-    }
-    .dark {
-        --background: 270, 15.6%, 12.5%;
-        --foreground: 268, 60%, 95.1%;
-        --card: 315, 22.2%, 7.1%;
-        --card-foreground: 268, 60%, 95.1%;
-        --popover: 315, 22.2%, 7.1%;
-        --popover-foreground: 268, 60%, 95.1%;
-        --primary: 325.3, 42.1%, 21%;
-        --primary-foreground: 268, 60%, 95.1%;
-        --secondary: 270, 15.6%, 12.5%;
-        --secondary-foreground: 268, 60%, 95.1%;
-        --muted: 270, 15.6%, 12.5%;
-        --muted-foreground: 268, 60%, 95.1%;
-        --accent: 335.8, 59.8%, 65.9%;
-        --accent-foreground: 270, 15.6%, 12.5%;
-        --destructive: 325.3, 42.1%, 21%;
-        --destructive-foreground: 268, 60%, 95.1%;
-        --border: 335.8, 59.8%, 65.9%;
-        --input: 335.8, 59.8%, 65.9%;
-        --ring: 335.8, 59.8%, 65.9%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
-    }
-
-    .theme-sleek:not(.dark) .intro {
-        margin-bottom: 1.5rem;
-    }
-
-    .theme-sleek:not(.dark) .focus-areas {
-        margin-bottom: 0.5rem;
-    }
-
-    .theme-sleek:not(.dark) h2 {
-        margin-top: 1.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .theme-sleek:not(.dark) p {
-        margin-bottom: 0.75rem;
-    }
-
-    .theme-sleek:not(.dark) .reflection-header h3,
-    .theme-sleek:not(.dark) .media-header h3 {
-        color: rgb(var(--color-text-heading));
-    }
-
-    .theme-sleek:not(.dark) .reflection-header p {
-        color: rgb(var(--color-text-body));
-    }
+html {
+  overflow-y: scroll;
+  color-scheme: light;
 }
 
-@layer components {
+html.dark {
+  color-scheme: dark;
+}
 
-    /* ------ GLOBAL STYLES - START ------ */
-    strong {
-        font-weight: 600;
-        color: theme('colors.text.bold');
-    }
+html,
+body {
+  @apply size-full;
+}
 
-    mark {
-        background-color: theme('colors.bg.selection');
-        color: theme('colors.text.selection');
-    }
+body {
+  @apply font-sans antialiased;
+  @apply flex flex-col;
+  @apply bg-stone-100 dark:bg-stone-900;
+  @apply text-black/50 dark:text-white/75;
+}
 
-    /* 
-        if you want an anchor tag to not have this style, 
-        just add a class `unset` to it. 
-    */
-    a:not(.unset) {
-        position: relative;
-        text-decoration: none;
-        color: inherit;
-    }
+header {
+  @apply fixed top-0 left-0 right-0 z-50 py-5;
+  @apply bg-stone-100/75 dark:bg-stone-900/25;
+  @apply backdrop-blur-sm saturate-200;
+}
 
-    a:not(.unset)::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background-color: currentColor;
-        transition: width 0.3s ease;
-    }
+main {
+  @apply flex-1 py-32;
+}
 
-    a:not(.unset):hover {
-        color: theme('colors.text.link');
-    }
+footer {
+  @apply py-5 text-sm;
+}
 
-    a:not(.unset):hover::after {
-        width: 100%;
-    }
+article {
+  @apply max-w-full prose dark:prose-invert prose-img:mx-auto prose-img:my-auto;
+  @apply prose-headings:font-semibold prose-p:font-serif;
+  @apply prose-headings:text-black prose-headings:dark:text-white;
+}
 
-    code:not(pre code):not(.unset) {
-        background-color: theme('colors.bg.code');
-        color: theme('colors.text.code');
-        padding: 0.125rem 0.25rem;
-        border-radius: 0.25rem;
-        font-size: 0.875em;
-        font-weight: 600;
-        border: 1px solid theme('colors.border.code');
-        margin-bottom: 1.25em;
-        font-family: "GeistMonoWeb", ui-monospace, monospace;
-    }
+@layer utilities {
+  article a {
+    @apply font-sans text-current underline underline-offset-2;
+    @apply decoration-black/15 dark:decoration-white/30;
+    @apply transition-colors duration-300 ease-in-out;
+  }
+  article a:hover {
+    @apply text-black dark:text-white;
+    @apply decoration-black/25 dark:decoration-white/50;
+  }
+}
 
-    html.dark code:not(pre code) {
-        background-color: rgb(var(--color-bg-code) / 0.15);
-        border-color: rgb(var(--color-border-code) / 0.15);
-    }
+.animate {
+  @apply opacity-0 translate-y-3;
+  @apply transition-all duration-700 ease-out;
+}
 
-    ul:not(.unset):not(:where([class~="prose"] *)) {
-        padding-left: 0;
-        list-style: none;
-    }
+.animate.show {
+  @apply opacity-100 translate-y-0;
+}
 
-    ul:not(:where([class~="prose"] *))>li {
-        position: relative;
-        padding-left: 1.375rem;
-    }
+html #back-to-top {
+  @apply opacity-0 pointer-events-none;
+}
 
-    ul:not(.unset):not(:where([class~="prose"] *))>li::before {
-        position: absolute;
-        left: 0;
-        content: "»";
-        color: rgb(var(--color-text-muted));
-    }
-
-    ol:not(.unset):not(:where([class~="prose"] *)) {
-        padding-left: 1.125rem;
-    }
-
-    ol:not(.unset):not(:where([class~="prose"] *))>li::marker {
-        color: rgb(var(--color-text-muted))
-    }
-
-    ul:not(.unset):not(:where([class~="prose"] *))>li,
-    ol:not(.unset):not(:where([class~="prose"] *))>li {
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
-    }
-
-    ::selection {
-        background: theme('colors.bg.selection');
-        color: theme('colors.text.selection');
-    }
-
-    /* ------ GLOBAL STYLES - END ------ */
-
-    /* ------ REUSABLE UTILS - START ------ */
-    .animated-link {
-        position: relative;
-        box-decoration-break: clone;
-        text-decoration: none;
-    }
-
-    .animated-link:hover:after {
-        transform: translateZ(0) scale(1);
-    }
-
-    .animated-link:after {
-        left: 0;
-        right: 0;
-        bottom: -3px;
-        content: "";
-        height: 2px;
-        position: absolute;
-        transform: translateZ(0) scaleX(0);
-        transform-origin: left center;
-        transition: all .150s ease-in-out;
-        background-image: linear-gradient(to right, theme('colors.text.link'), theme('colors.text.link'));
-    }
-
-    .animated-link.show:after {
-        transform: translateZ(0) scale(1);
-    }
-
-    /* ------ REUSABLE UTILS - END ------ */
+html.scrolled #back-to-top {
+  @apply opacity-100 pointer-events-auto;
 }

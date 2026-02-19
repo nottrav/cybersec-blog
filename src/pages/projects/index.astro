@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "@layouts/PageLayout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { PROJECTS } from "@consts";
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const featuredProjects = projects.filter((project) => project.data.featured);
+const otherProjects = projects.filter((project) => !project.data.featured);
+const listProjects = featuredProjects.length > 0 ? otherProjects : projects;
+---
+
+<PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
+  <Container>
+    <div class="space-y-10">
+      <div class="animate font-semibold text-black dark:text-white">
+        Projects
+      </div>
+      {featuredProjects.length > 0 && (
+        <section class="animate space-y-4">
+          <h2 class="font-semibold text-black dark:text-white">Featured</h2>
+          <ul class="flex flex-col gap-4">
+            {featuredProjects.map((project) => (
+              <li>
+                <ArrowCard entry={project} showTags={false}/>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      {listProjects.length > 0 && (
+        <section class="animate space-y-4">
+          {featuredProjects.length > 0 && (
+            <h2 class="font-semibold text-black dark:text-white">More Projects</h2>
+          )}
+          <ul class="flex flex-col gap-4">
+            {listProjects.map((project) => (
+              <li>
+                <ArrowCard entry={project} showTags={false}/>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  </Container>
+</PageLayout>

@@ -1,48 +1,64 @@
-# travismcghee.space
+![Astro Nano](_astro_nano.png)
 
-My personal site - a blog and portfolio hybrid built with Astro, deployed on Netlify.
+Astro Nano is a static, minimalist, lightweight, lightning fast portfolio and blog theme.
 
-**Live:** [travismcghee.space](https://travismcghee.space)
+Built with Astro, Tailwind and Typescript, an no frameworks.
 
----
+It was designed as an even more minimal theme than my popular theme [Astro Sphere](https://github.com/markhorn-dev/astro-sphere)
 
-## What this is
+## 🚀 Deploy your own
 
-Started as a school project, now an evolving space where I write about cybersecurity, privacy, and staying safe online - plus showcase work I'm proud of.
+[![Deploy with Vercel](_deploy_vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-nano)  [![Deploy with Netlify](_deploy_netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-nano)
 
-I publish when inspiration strikes: deep dives into how things work, opinion pieces on digital rights, and occasional walkthroughs. The throughline is making security and privacy accessible without fear-mongering.
+## 📋 Features
 
----
+- ✅ 100/100 Lighthouse performance
+- ✅ Responsive
+- ✅ Accessible
+- ✅ SEO-friendly
+- ✅ Typesafe
+- ✅ Minimal style
+- ✅ Light/Dark Theme
+- ✅ Animated UI
+- ✅ Tailwind styling
+- ✅ Auto generated sitemap
+- ✅ Auto generated RSS Feed
+- ✅ Markdown support
+- ✅ MDX Support (components in your markdown)
 
-## Tech stack
+## 💯 Lighthouse score
+![Astro Nano Lighthouse Score](_lighthouse.png)
 
-| Layer | Choice |
-|-------|--------|
-| Framework | [Astro](https://astro.build/) — static site generation, minimal JS |
-| Styling | Tailwind CSS |
-| Content | Markdown |
-| Deployment | Netlify |
-| Previous life | WordPress (migrated for performance and simplicity) |
+## 🕊️ Lightweight
+No frameworks or added bulk
 
-**Why Astro?** I wanted something fast by default, with less abstraction between me and the final HTML. The WordPress plugin ecosystem had become a liability - this rebuild cut load times dramatically and gave me full control over the design.
+## ⚡︎ Fast
+Rendered in ~40ms on localhost
 
----
+## 📄 Configuration
 
-## Highlights
+The blog posts on the demo serve as the documentation and configuration.
 
-### Writing: The Convenience Trap (3-part series)
-A look at how frictionless tech erodes privacy, and what we give up for "free" services. [Start here →](https://travismcghee.space/posts/convenience-trap-1)
+## 💻 Commands
 
-### Projects
-Coursework from my Digital Communication, Information, and Media (DCIM) minor, organized by topic with video demos and one podcast.
+All commands are run from the root of the project, from a terminal:
 
----
+Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
 
-## What's next
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run dev:network`     | Starts local dev server on local network         |
+| `npm run sync`            | Generates TypeScript types for all Astro modules.|
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run preview:network` | Preview build on local network                   |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| `npm run lint`            | Run ESLint                                       |
+| `npm run lint:fix`        | Auto-fix ESLint issues                           |
 
-- RSS feed for posts
-- More interactive project demos
+## 🏛️ License
 
----
-
-Built by [Travis McGhee](https://travismcghee.space/about) — always learning.
+MIT

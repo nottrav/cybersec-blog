@@ -1,15 +1,120 @@
 ---
-import PageMeta from "../components/PageMeta.astro";
-import PageLayout from "../layouts/PageLayout.astro";
-import Intro from "../components/Intro.astro";
-import ContactForm from "../components/ContactForm.astro";
-import { SITE_TITLE } from "../config";
+import { getCollection } from "astro:content";
+import Container from "@components/Container.astro";
+import PageLayout from "@layouts/PageLayout.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import Link from "@components/Link.astro";
+import { SITE, HOME, SOCIALS } from "@consts";
+
+const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const projects = (await getCollection("projects"))
+  .filter(project => !project.data.draft)
+  .filter(project => project.data.featured)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const connectLinks = [
+  ...SOCIALS.map((social) => ({
+    href: social.HREF,
+    label: social.NAME,
+    external: true,
+  })),
+  ...(SITE.EMAIL
+    ? [{
+        href: `mailto:${SITE.EMAIL}`,
+        label: SITE.EMAIL,
+        external: false,
+      }]
+    : []),
+];
+
 ---
 
-<PageLayout>
-  <PageMeta title={`${SITE_TITLE} | IT Graduate Portfolio`} slot="meta" />
-  <Fragment slot="main">
-    <Intro />
-    <ContactForm />
-  </Fragment>
+<PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Container>
+    <h4 class="animate font-semibold text-black dark:text-white">
+      Hi, I'm Travis
+    </h4>
+    <div class="space-y-16">
+      <section>
+        <article class="space-y-4 max-w-2xl">
+          <p class="animate">
+            I'm a recent Rutgers grad with a B.S. in Information Technology and Informatics and a minor in Digital Communication, Information, and Media. I post about cybersecurity and privacy here, mostly around real risks, common scam patterns, and building safer habits.
+          </p>
+          <p class="animate">
+            I like understanding how systems work and where they fall short. The investigative side of security is what pulled me in, but I enjoy learning across the board. My coursework covered networking, security, data analytics, and privacy, and I've built on that with projects in Python, Java, database management, and tools like Tableau. At home, I run a Raspberry Pi with Pi-hole to tinker with DNS filtering and see what's actually moving across my network.
+          </p>
+          <p class="animate">
+            I'm still learning new things and looking for entry-level roles in cybersecurity or IT where I can grow and contribute. I rebuilt this site from WordPress to Astro for speed and simplicity.
+          </p>
+        </article>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Featured projects
+          </h5>
+          <Link href="/projects">
+            See all projects
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {projects.map(project => (
+            <li>
+              <ArrowCard entry={project} showTags={false} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap gap-y-2 items-center justify-between">
+          <h5 class="font-semibold text-black dark:text-white">
+            Latest posts
+          </h5>
+          <Link href="/blog">
+            See all posts
+          </Link>
+        </div>
+        <ul class="flex flex-col gap-4">
+          {blog.map(post => (
+            <li>
+              <ArrowCard entry={post} />
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="animate space-y-4">
+        <h5 class="font-semibold text-black dark:text-white">
+          Let's Connect
+        </h5>
+        <article>
+          <p>
+            If you want to connect, collaborate, or discuss cybersecurity, reach out
+            on social media.
+          </p>
+        </article>
+        <ul class="flex flex-wrap gap-2">
+          {connectLinks.map((item, index) => (
+            <li class="flex gap-x-2 text-nowrap">
+              <Link
+                href={item.href}
+                external={item.external}
+                aria-label={item.external ? `${SITE.NAME} on ${item.label}` : `Email ${SITE.NAME}`}
+              >
+                {item.label}
+              </Link>
+              {index < connectLinks.length - 1 && "/"}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  </Container>
 </PageLayout>

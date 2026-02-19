@@ -1,60 +1,27 @@
 ---
-/* 
-  This layout is used in 
-  - pages/index.astro
-  - pages/blog.astro
-  - pages/projects.astro
-*/
+import Head from "@components/Head.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import { SITE } from "@consts";
 
-// Import the global.css file here so that it is included on
-import "../styles/global.css";
+type Props = {
+  title: string;
+  description: string;
+};
 
-import GoogleFont from "./GoogleFont.astro";
-import FontAwesome from "./FontAwesome.astro";
-import ThemeScript from "./ThemeScript.astro";
-import Favicon from "./Favicon.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+const { title, description } = Astro.props;
 ---
 
-<!DOCTYPE html>
-<html class="theme-sleek" lang="en">
+<!doctype html>
+<html lang="en">
   <head>
-    <!-- Global Metadata -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="generator" content="Blogster" />
-    <Favicon />
-    <slot name="meta" />
-    <GoogleFont />
-    <ThemeScript />
-    <FontAwesome />
-    
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="e1211383-267e-413c-b918-0d7fbb75542a"></script>
+    <Head title={`${title} | ${SITE.NAME}`} description={description} />
   </head>
-
-  <body
-    class="min-h-screen max-w-3xl mx-auto px-6 sm:px-8"
-  >
+  <body>
     <Header />
-    <main id="main" role="main">
-      <slot name="main" />
+    <main>
+      <slot />
     </main>
     <Footer />
-    <style>
-      body {
-        display: grid;
-        grid-template-areas:
-          "header"
-          "main"
-          "footer";
-        grid-template-rows: 5rem minmax(0, 1fr) 5rem;
-        grid-template-columns: minmax(0, 1fr);
-      }
-      main {
-        grid-area: main;
-      }
-    </style>
   </body>
 </html>

@@ -1,64 +1,37 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import ThemeToggle from "./ThemeToggle";
-
-const controlClass =
-  "inline-flex items-center justify-center h-10 w-10 rounded-md bg-transparent text-sm font-medium transition-colors text-text-body hover:text-text-link hover:bg-bg-selection/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-text-link focus-visible:ring-offset-2 focus-visible:ring-offset-bg-body";
+import Container from "@components/Container.astro";
+import Link from "@components/Link.astro";
+import { SITE } from "@consts";
 ---
 
 <header>
-  <a
-    class="unset absolute z-10 left-[50%] -top-[100rem] translate-x-[-50%] bg-white text-black px-8 py-2 focus:top-[initial]"
-    href="#main"
-  >
-    Skip to content
-  </a>
-  <nav class="flex flex-wrap items-center justify-between gap-x-6 sm:gap-x-8 gap-y-2">
-    <section class="text-text-bold flex items-center gap-2 sm:gap-4 min-w-0">
-      <a href="/" class="unset flex-shrink-0">
-        <img src="/images/Site_Logo.png" alt="Site Logo" class="h-9 sm:h-14 w-auto" width="64" height="64" />
-      </a>
-      <ul class="unset flex gap-2 sm:gap-4 [&>li]:p-0 text-sm sm:text-base">
-        <li><HeaderLink href="/">Home</HeaderLink></li>
-        <li><HeaderLink href="/blog">Blog</HeaderLink></li>
-        <li><HeaderLink href="/projects">Projects</HeaderLink></li>
-      </ul>
-    </section>
-    <div class="flex items-center gap-1 sm:gap-2 shrink-0 flex-nowrap -translate-y-[1.5px]">
-      <a
-        class={`unset ${controlClass}`}
-        href="https://github.com/nottrav"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-      >
-        <i
-          class="fa-brands fa-github text-[0.95rem]"
-          aria-hidden="true"
-          title="Travis McGhee on GitHub"></i>
-        <span class="sr-only">Travis McGhee on GitHub</span>
-      </a>
-      <a
-        class={`unset ${controlClass}`}
-        href="https://www.linkedin.com/in/travismcghee/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="LinkedIn"
-      >
-        <i
-          class="fa-brands fa-linkedin text-[1rem]"
-          aria-hidden="true"
-          title="Travis McGhee on LinkedIn"></i>
-        <span class="sr-only">Travis McGhee on LinkedIn</span>
-      </a>
-      <ThemeToggle className={`${controlClass} opacity-85 hover:opacity-100`} client:load />
+  <Container>
+    <div class="flex flex-wrap gap-y-2 justify-between">
+      <Link href="/" underline={false}>
+        <div class="font-semibold flex items-center gap-2">
+          {SITE.LOGO && (
+            <img
+              src={SITE.LOGO}
+              alt={`${SITE.NAME} logo`}
+              width="30"
+              height="30"
+              class="h-[30px] w-[30px] rounded-sm object-cover"
+            />
+          )}
+          <span>{SITE.NAME}</span>
+        </div>
+      </Link>
+      <nav class="flex gap-1">
+        <Link href="/blog">
+          blog
+        </Link>
+        <span>
+          {`/`}
+        </span>
+        <Link href="/projects">
+          projects
+        </Link>
+      </nav>
     </div>
-  </nav>
+  </Container>
 </header>
-<style>
-  header {
-    grid-area: header;
-    display: flex;
-    align-items: center;
-  }
-</style>

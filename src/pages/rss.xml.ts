@@ -1,57 +1,30 @@
 import rss from "@astrojs/rss";
-import { blog } from "../lib/markdoc/frontmatter.schema";
-import { readAll } from "../lib/markdoc/read";
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from "../config";
+import { getCollection } from "astro:content";
+import { HOME } from "@consts";
 
-export const get = async () => {
-  const posts = await readAll({
-    directory: "blog",
-    frontmatterSchema: blog,
-  });
+type Context = {
+  site: string
+}
 
-  const sortedPosts = posts
-    .filter((p) => p.frontmatter.draft !== true)
-    .sort(
-      (a, b) =>
-        new Date(b.frontmatter.date).valueOf() -
-        new Date(a.frontmatter.date).valueOf()
-    );
+export async function GET(context: Context) {
+  const blog = (await getCollection("blog"))
+  .filter(post => !post.data.draft);
 
-  let baseUrl = SITE_URL;
-  // removing trailing slash if found
-  // https://example.com/ => https://example.com
-  baseUrl = baseUrl.replace(/\/+$/g, "");
+  const projects = (await getCollection("projects"))
+    .filter(project => !project.data.draft);
 
-  const rssItems = sortedPosts.map(({ frontmatter, slug }) => {
-    if (frontmatter.external) {
-      const title = frontmatter.title;
-      const pubDate = frontmatter.date;
-      const link = frontmatter.url;
-
-      return {
-        title,
-        pubDate,
-        link,
-      };
-    }
-
-    const title = frontmatter.title;
-    const pubDate = frontmatter.date;
-    const description = frontmatter.description;
-    const link = `${baseUrl}/blog/${slug}`;
-
-    return {
-      title,
-      pubDate,
-      description,
-      link,
-    };
-  });
+  const items = [...blog, ...projects]
+    .sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
 
   return rss({
-    title: SITE_TITLE,
-    description: SITE_DESCRIPTION,
-    site: baseUrl,
-    items: rssItems,
+    title: HOME.TITLE,
+    description: HOME.DESCRIPTION,
+    site: context.site,
+    items: items.map((item) => ({
+      title: item.data.title,
+      description: item.data.description,
+      pubDate: item.data.date,
+      link: `/${item.collection}/${item.slug}/`,
+    })),
   });
-};
+}
