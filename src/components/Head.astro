@@ -18,9 +18,10 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/x-icon" href="/favicon-light.svg">
+<link rel="icon" type="image/png" href="/favicon-dark.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="/favicon-light.png" media="(prefers-color-scheme: light)">
+<link rel="icon" id="dynamic-favicon" type="image/png" href="/favicon-light.png">
+<link rel="shortcut icon" href="/favicon.ico">
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
@@ -51,10 +52,16 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <link rel="alternate" type="application/rss+xml" title={SITE.NAME} href={new URL("rss.xml", Astro.site)} />
 
 <script is:inline>
+  const DARK_FAVICON = "/favicon-dark.png";
+  const LIGHT_FAVICON = "/favicon-light.png";
+  const THEME_KEY = "theme";
+  let faviconThemeListenersBound = false;
+
   function init() {
     preloadTheme();
     onScroll();
     animate();
+    updateFavicon();
 
     const backToTop = document.getElementById("back-to-top");
     backToTop?.addEventListener("click", (event) => scrollToTop(event));
@@ -64,29 +71,42 @@ const { title, description, image = "/nano.png" } = Astro.props;
 
     const lightThemeButton = document.getElementById("light-theme-button");
     lightThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "light");
+      localStorage.setItem(THEME_KEY, "light");
       toggleTheme(false);
     });
 
     const darkThemeButton = document.getElementById("dark-theme-button");
     darkThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "dark");
+      localStorage.setItem(THEME_KEY, "dark");
       toggleTheme(true);
     });
 
     const systemThemeButton = document.getElementById("system-theme-button");
     systemThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "system");
+      localStorage.setItem(THEME_KEY, "system");
       toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
     });
 
-    window.matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", event => {
-        if (localStorage.theme === "system" || !localStorage.theme) {
-          toggleTheme(event.matches);
+    if (!faviconThemeListenersBound) {
+      window.matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", event => {
+          const savedTheme = localStorage.getItem(THEME_KEY);
+          if (savedTheme === "system" || !savedTheme) {
+            toggleTheme(event.matches);
+          } else {
+            updateFavicon();
+          }
         }
-      }
-    );
+      );
+
+      window.addEventListener("storage", event => {
+        if (event.key === THEME_KEY) {
+          preloadTheme();
+        }
+      });
+
+      faviconThemeListenersBound = true;
+    }
 
     document.addEventListener("scroll", onScroll);
   }
@@ -141,12 +161,35 @@ function toggleTheme(dark) {
       document.documentElement.classList.remove("dark");
     }
 
+    updateFavicon(dark);
+
   window.getComputedStyle(css).opacity;
     document.head.removeChild(css);
   }
 
+  function getThemeFromPreference() {
+    const userTheme = localStorage.getItem(THEME_KEY);
+
+    if (userTheme === "light" || userTheme === "dark") {
+      return userTheme;
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function updateFavicon(darkOverride) {
+    const dynamicFavicon = document.getElementById("dynamic-favicon");
+    if (!(dynamicFavicon instanceof HTMLLinkElement)) return;
+
+    const dark = typeof darkOverride === "boolean"
+      ? darkOverride
+      : getThemeFromPreference() === "dark";
+
+    dynamicFavicon.href = dark ? DARK_FAVICON : LIGHT_FAVICON;
+  }
+
   function preloadTheme() {
-    const userTheme = localStorage.theme;
+    const userTheme = localStorage.getItem(THEME_KEY);
 
     if (userTheme === "light" || userTheme === "dark") {
       toggleTheme(userTheme === "dark");
