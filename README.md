@@ -1,64 +1,34 @@
-![Astro Nano](_astro_nano.png)
+# cybersec-blog
 
-Astro Nano is a static, minimalist, lightweight, lightning fast portfolio and blog theme.
+Personal cybersecurity blog and portfolio by Travis McGhee, focused on digital privacy, scam awareness, and safer online habits.
 
-Built with Astro, Tailwind and Typescript, an no frameworks.
+## Stack
 
-It was designed as an even more minimal theme than my popular theme [Astro Sphere](https://github.com/markhorn-dev/astro-sphere)
+- Astro
+- Tailwind CSS
+- TypeScript
+- Markdown/MDX
 
-## 🚀 Deploy your own
+## Local Development
 
-[![Deploy with Vercel](_deploy_vercel.svg)](https://vercel.com/new/clone?repository-url=https://github.com/markhorn-dev/astro-nano)  [![Deploy with Netlify](_deploy_netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/markhorn-dev/astro-nano)
+```bash
+npm install
+npm run dev
+```
 
-## 📋 Features
+Site runs at `http://localhost:4321`.
 
-- ✅ 100/100 Lighthouse performance
-- ✅ Responsive
-- ✅ Accessible
-- ✅ SEO-friendly
-- ✅ Typesafe
-- ✅ Minimal style
-- ✅ Light/Dark Theme
-- ✅ Animated UI
-- ✅ Tailwind styling
-- ✅ Auto generated sitemap
-- ✅ Auto generated RSS Feed
-- ✅ Markdown support
-- ✅ MDX Support (components in your markdown)
+## Commands
 
-## 💯 Lighthouse score
-![Astro Nano Lighthouse Score](_lighthouse.png)
+| Command               | Action                                |
+| :-------------------- | :------------------------------------ |
+| `npm run dev`         | Start local dev server                |
+| `npm run dev:network` | Start dev server on local network     |
+| `npm run build`       | Run checks and build for production   |
+| `npm run preview`     | Preview production build              |
+| `npm run lint`        | Run ESLint                            |
+| `npm run lint:fix`    | Auto-fix lint issues                  |
 
-## 🕊️ Lightweight
-No frameworks or added bulk
+## Notes
 
-## ⚡︎ Fast
-Rendered in ~40ms on localhost
-
-## 📄 Configuration
-
-The blog posts on the demo serve as the documentation and configuration.
-
-## 💻 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-Replace npm with your package manager of choice. `npm`, `pnpm`, `yarn`, `bun`, etc
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run dev:network`     | Starts local dev server on local network         |
-| `npm run sync`            | Generates TypeScript types for all Astro modules.|
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run preview:network` | Preview build on local network                   |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-| `npm run lint`            | Run ESLint                                       |
-| `npm run lint:fix`        | Auto-fix ESLint issues                           |
-
-## 🏛️ License
-
-MIT
+This site is customized from the Astro Nano starter.
