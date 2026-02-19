@@ -18,10 +18,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/png" href="/favicon-dark.png" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/png" href="/favicon-light.png" media="(prefers-color-scheme: light)">
-<link rel="icon" id="dynamic-favicon" type="image/png" href="/favicon-light.png">
-<link rel="shortcut icon" href="/favicon.ico">
+<link rel="icon" id="dynamic-favicon" type="image/png" href="/favicon-light-32.png" sizes="32x32">
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
@@ -52,8 +49,8 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <link rel="alternate" type="application/rss+xml" title={SITE.NAME} href={new URL("rss.xml", Astro.site)} />
 
 <script is:inline>
-  const DARK_FAVICON = "/favicon-dark.png";
-  const LIGHT_FAVICON = "/favicon-light.png";
+  const DARK_FAVICON = "/favicon-dark-32.png";
+  const LIGHT_FAVICON = "/favicon-light-32.png";
   const THEME_KEY = "theme";
   let faviconThemeListenersBound = false;
 
