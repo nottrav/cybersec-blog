@@ -1,34 +1,45 @@
-# cybersec-blog
+# Travis McGhee — Cybersecurity Blog
 
-Personal cybersecurity blog and portfolio by Travis McGhee, focused on digital privacy, scam awareness, and safer online habits.
+Personal blog and project portfolio focused on digital privacy, scam awareness, and safer online habits.
+
+**Live site:** [travismcghee.space](https://travismcghee.space)
 
 ## Stack
 
-- Astro
-- Tailwind CSS
+- [Astro](https://astro.build) — static site generator
+- [Tailwind CSS](https://tailwindcss.com) — styling
 - TypeScript
-- Markdown/MDX
+- Markdown / MDX for content
 
 ## Local Development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Site runs at `http://localhost:4321`.
 
 ## Commands
 
-| Command               | Action                                |
-| :-------------------- | :------------------------------------ |
-| `npm run dev`         | Start local dev server                |
-| `npm run dev:network` | Start dev server on local network     |
-| `npm run build`       | Run checks and build for production   |
-| `npm run preview`     | Preview production build              |
-| `npm run lint`        | Run ESLint                            |
-| `npm run lint:fix`    | Auto-fix lint issues                  |
+| Command             | Action                            |
+| :------------------ | :-------------------------------- |
+| `pnpm dev`          | Start local dev server            |
+| `pnpm dev:network`  | Start dev server on local network |
+| `pnpm build`        | Run checks and build for production |
+| `pnpm preview`      | Preview production build          |
+| `pnpm lint`         | Run ESLint                        |
+| `pnpm lint:fix`     | Auto-fix lint issues              |
 
-## Notes
+## Project Structure
 
-This site is customized from the Astro Nano starter.
+- `src/content/blog/` — blog posts (Markdown/MDX)
+- `src/content/projects/` — project entries
+- `src/components/` — Astro components
+- `src/pages/` — routes
+- `src/consts.ts` — site-wide constants
+- `public/` — static assets (images, PDFs, fonts)
+
+## Credits
+
+Built on the [Astro Nano](https://github.com/markhorn-dev/astro-nano) starter theme.
