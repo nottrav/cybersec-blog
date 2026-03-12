@@ -16,26 +16,30 @@ const { width = 30, height = 30 } = Astro.props;
   style="overflow: visible;"
 >
   <g id="ghost-head">
-    <circle cx="50" cy="50" r="48" fill="var(--ghost-bg)" />
+    <!-- Circle: black in light mode, hidden in dark mode -->
+    <circle cx="50" cy="50" r="48" fill="var(--ghost-circle)" />
+    <!-- Ghost body with eye holes cut out via evenodd -->
     <path
-      d="M18 52 C18 30 32 14 50 14 C68 14 82 30 82 52 L82 82 L73 73 L64 82 L55 73 L46 82 L37 73 L28 82 Z"
+      fill-rule="evenodd"
+      d="M18 52 C18 30 32 14 50 14 C68 14 82 30 82 52 L82 82 L73 73 L64 82 L55 73 L46 82 L37 73 L28 82 Z
+         M32 48 A6 7 0 1 0 44 48 A6 7 0 1 0 32 48 Z
+         M56 48 A6 7 0 1 0 68 48 A6 7 0 1 0 56 48 Z"
       fill="var(--ghost-body)"
     />
-    <ellipse id="ghost-left-eye"  cx="38" cy="48" rx="6" ry="7" fill="var(--ghost-eye)" />
-    <ellipse id="ghost-right-eye" cx="62" cy="48" rx="6" ry="7" fill="var(--ghost-eye)" />
+    <!-- White pupils — visible inside the dark eye holes, follow cursor -->
+    <ellipse id="ghost-left-eye"  cx="38" cy="48" rx="3" ry="3.5" fill="var(--ghost-body)" />
+    <ellipse id="ghost-right-eye" cx="62" cy="48" rx="3" ry="3.5" fill="var(--ghost-body)" />
   </g>
 </svg>
 
 <style>
   :root {
-    --ghost-bg:   #1e293b;
-    --ghost-body: #f8fafc;
-    --ghost-eye:  #1e293b;
+    --ghost-circle: #000000;
+    --ghost-body:   #f8fafc;
   }
   .dark {
-    --ghost-bg:   #e2e8f0;
-    --ghost-body: #0f1117;
-    --ghost-eye:  #e2e8f0;
+    --ghost-circle: transparent;
+    --ghost-body:   #e2e8f0;
   }
 </style>
 
@@ -111,7 +115,7 @@ const { width = 30, height = 30 } = Astro.props;
 
     function blink() {
       blinking = true;
-      const steps = [7, 4, 1.5, 0.2, 1.5, 4, 7];
+      const steps = [3.5, 2, 0.5, 0.1, 0.5, 2, 3.5];
       let i = 0;
       const tick = setInterval(() => {
         le.setAttribute("ry", String(steps[i]));
@@ -119,8 +123,8 @@ const { width = 30, height = 30 } = Astro.props;
         i++;
         if (i >= steps.length) {
           clearInterval(tick);
-          le.setAttribute("ry", "7");
-          re.setAttribute("ry", "7");
+          le.setAttribute("ry", "3.5");
+          re.setAttribute("ry", "3.5");
           le.setAttribute("cx", String(LEFT_CENTER.x  + leftOffset.x));
           le.setAttribute("cy", String(LEFT_CENTER.y  + leftOffset.y));
           re.setAttribute("cx", String(RIGHT_CENTER.x + rightOffset.x));
