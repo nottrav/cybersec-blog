@@ -2,7 +2,7 @@
 
 Personal blog and project portfolio focused on digital privacy, scam awareness, and safer online habits.
 
-**Live site:** [travismcghee.space](https://travismcghee.space)
+**Live site:** [travismcghee.com](https://travismcghee.com)
 
 ## Stack
 
