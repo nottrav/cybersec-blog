@@ -43,7 +43,7 @@ const { width = 30, height = 30 } = Astro.props;
   const LEFT_CENTER  = { x: 38, y: 48 };
   const RIGHT_CENTER = { x: 62, y: 48 };
   const MAX_TRAVEL   = 4;
-  const MAX_TILT     = 5;
+  const MAX_TILT     = 3;
 
   function init() {
     const svg      = document.getElementById("ghost-logo") as SVGSVGElement | null;
@@ -89,7 +89,7 @@ const { width = 30, height = 30 } = Astro.props;
         const svgX   = (e.clientX - rect.left) * scaleX;
         const svgY   = (e.clientY - rect.top)  * scaleY;
 
-        const tilt = Math.max(-MAX_TILT, Math.min(MAX_TILT, (svgX - 50) * 0.1));
+        const tilt = (e.clientX / window.innerWidth - 0.5) * MAX_TILT * 2;
         headEl.setAttribute("transform", `rotate(${tilt.toFixed(2)}, 50, 50)`);
 
         leftOffset  = calcOffset(LEFT_CENTER,  svgX, svgY, 1.0);
