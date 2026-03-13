@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "@fontsource/inter";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/lora";
+
 html {
   overflow-y: scroll;
   color-scheme: light;
