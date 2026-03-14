@@ -31,6 +31,9 @@ The site serves a dual purpose: tech blog (digital privacy, scam awareness, cybe
   - Projects: `title`, `description`, `date`, `draft?`, `featured?`, `status?` (planning/in-progress/completed), `stack?`, `image?`, `demoURL?`, `repoURL?`
 - Existing tags and series for consistency
 - MDX component usage patterns
+- Utility functions in `src/lib/utils.ts`: `readingTime()`, `formatDate()`, `tagToSlug()`, `getDisplayTags()` (including `"DCIM Capstone"` special case)
+- `src/consts.ts` for site name, homepage post/project counts, social links
+- Content files live in `src/content/blog/` and `src/content/projects/` (filename = slug)
 - Site focus: digital privacy, scam awareness, cybersecurity
 - Dual purpose: content should demonstrate technical expertise for recruiters while staying accessible and engaging for general readers
 
@@ -67,6 +70,7 @@ The site serves a dual purpose: tech blog (digital privacy, scam awareness, cybe
 **Boundaries:**
 - Does NOT create content structure or frontmatter (Content Writer)
 - Does NOT challenge the ideas themselves (Devil's Advocate)
+- If a post's core argument seems logically weak, flags it and suggests involving the Devil's Advocate rather than rewriting the argument itself
 
 **Reusable:** Yes.
 
@@ -108,13 +112,14 @@ The site serves a dual purpose: tech blog (digital privacy, scam awareness, cybe
 - Validating builds after changes
 - Checking/improving SEO metadata and OG images
 - Verifying RSS feed and sitemap accuracy
-- Accessibility audits
+- Accessibility audits (detects issues; UI Developer fixes them)
 - Performance checks (image optimization, bundle size)
 - Lint enforcement
+- Owns awareness of `src/consts.ts` — flags when global metadata needs updating
 
 **Boundaries:**
 - Does NOT handle security (Security Auditor)
-- Does NOT make visual design decisions (UI Developer)
+- Does NOT make visual design decisions or fix accessibility markup (UI Developer)
 - Does NOT touch content quality (Content Writer / Writing Editor)
 
 ## Agent 5: Devil's Advocate
@@ -168,9 +173,31 @@ The site serves a dual purpose: tech blog (digital privacy, scam awareness, cybe
 
 **Mostly reusable:** Core checks apply anywhere; Astro-specific checks are project-tailored.
 
+## Common Workflows
+
+### New blog post (end-to-end)
+1. **Content Writer** — drafts the post with proper frontmatter, structure, and MDX
+2. **Writing Editor** — polishes prose, enforces tone, removes AI-isms
+3. **Devil's Advocate** — challenges the argument or angle (if warranted)
+4. **Site Ops** — validates build, checks SEO metadata, verifies RSS
+5. **Security Auditor** — scans for any issues (if post includes external data/scripts)
+
+### New feature or component
+1. **Devil's Advocate** — challenges the idea before building
+2. **UI Developer** — implements the component
+3. **Site Ops** — validates build, accessibility audit
+4. **Security Auditor** — scans for vulnerabilities
+
+### Periodic maintenance
+1. **Security Auditor** — full codebase and dependency audit
+2. **Site Ops** — build validation, SEO check, accessibility sweep
+
 ## Implementation Notes
 
-- **Location:** Sub-agents will be configured as Claude Code agent definitions within the project
+- **Location:** Individual markdown files under `.claude/agents/` in the project root (e.g., `.claude/agents/content-writer.md`)
 - **Conventions:** All project-specific agents enforce: semicolons required, double quotes, `cn()` utility, `@` path alias
+- **Context:** All agents reference `CLAUDE.md` as shared knowledge base for project conventions
 - **Dispatching:** Agents are invoked as sub-agents during task execution; the main Claude Code session acts as coordinator
 - **Lane separation:** Each agent has a clearly defined scope. Content Writer does not edit prose. Writing Editor does not restructure content. UI Developer does not touch SEO. Etc.
+- **Out-of-scope behavior:** When an agent is asked to do something outside its lane, it should refuse, explain why, and recommend the correct agent
+- **Maintenance:** Agent definitions should be updated when project conventions, schemas, or structure change significantly
