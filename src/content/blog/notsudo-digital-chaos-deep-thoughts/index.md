@@ -1,5 +1,5 @@
 ---
-title: "Travis McGhee | Digital Privacy & Cybersecurity Insights"
+title: "Digital Chaos & Deep Thoughts: Why This Blog Exists"
 description: "Exploring the intersection of technology, privacy, and security in today's digital landscape."
 tags:
   - Privacy

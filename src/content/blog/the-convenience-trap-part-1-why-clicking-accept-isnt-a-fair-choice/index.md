@@ -2,6 +2,8 @@
 title: "The Convenience Trap (Part 1): Why We Trade Privacy for Ease"
 description: "Understanding the psychology and design behind our privacy decisions."
 tags:
+  - Privacy
+  - Cybersecurity
   - DCIM Capstone
 series:
   name: "The Convenience Trap"

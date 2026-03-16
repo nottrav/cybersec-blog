@@ -2,13 +2,13 @@
 import Container from "@components/Container.astro";
 import GhostLogo from "@components/GhostLogo.astro";
 import Link from "@components/Link.astro";
-import { SITE } from "@consts";
 ---
 
 <header>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black dark:focus:bg-black dark:focus:text-white focus:rounded">Skip to main content</a>
   <Container>
     <div class="flex flex-wrap gap-y-2 justify-between">
-      <Link href="/" underline={false}>
+      <Link href="/" underline={false} aria-label="Home">
         <div class="font-semibold flex items-center gap-2">
           <GhostLogo width={30} height={30} />
         </div>

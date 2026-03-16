@@ -1,6 +1,6 @@
 ---
 title: "The Privacy Convenience Trade Off: Week 5 Blog Post"
-description: "For my capstone project, I want to create a blog series that explores one of the most important questions in today’s digital world: how much privacy a"
+description: "Introducing my capstone blog series exploring how much privacy people willingly trade for convenience in everyday digital life."
 tags:
   - Privacy
   - Cybersecurity

@@ -2,6 +2,8 @@
 title: "The Convenience Trap (Part 3): How to Stay Safe Without Giving Up Convenience"
 description: "Practical steps to balance privacy and convenience in digital life."
 tags:
+  - Privacy
+  - Cybersecurity
   - DCIM Capstone
 series:
   name: "The Convenience Trap"

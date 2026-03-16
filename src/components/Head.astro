@@ -8,11 +8,12 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  ogType?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = "/og-image.png" } = Astro.props;
+const { title, description, image = "/og-image.png", ogType = "website" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -28,7 +29,6 @@ const { title, description, image = "/og-image.png" } = Astro.props;
     }
   })();
 </script>
-<meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -39,15 +39,15 @@ const { title, description, image = "/og-image.png" } = Astro.props;
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={canonicalURL} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
@@ -72,8 +72,6 @@ const { title, description, image = "/og-image.png" } = Astro.props;
     const backToTop = document.getElementById("back-to-top");
     backToTop?.addEventListener("click", (event) => scrollToTop(event));
 
-    const backToPrev = document.getElementById("back-to-prev");
-    backToPrev?.addEventListener("click", () => window.history.back());
 
     const lightThemeButton = document.getElementById("light-theme-button");
     lightThemeButton?.addEventListener("click", () => {
@@ -229,9 +227,16 @@ function toggleTheme(dark) {
 
   function updateActiveThemeButton() {
     const theme = localStorage.getItem(THEME_KEY) || "system";
-    document.getElementById("light-theme-button")?.classList.toggle("theme-active", theme === "light");
-    document.getElementById("dark-theme-button")?.classList.toggle("theme-active", theme === "dark");
-    document.getElementById("system-theme-button")?.classList.toggle("theme-active", theme === "system" || !localStorage.getItem(THEME_KEY));
+    const lightBtn = document.getElementById("light-theme-button");
+    const darkBtn = document.getElementById("dark-theme-button");
+    const systemBtn = document.getElementById("system-theme-button");
+    const isSystem = theme === "system" || !localStorage.getItem(THEME_KEY);
+    lightBtn?.classList.toggle("theme-active", theme === "light");
+    darkBtn?.classList.toggle("theme-active", theme === "dark");
+    systemBtn?.classList.toggle("theme-active", isSystem);
+    lightBtn?.setAttribute("aria-pressed", String(theme === "light"));
+    darkBtn?.setAttribute("aria-pressed", String(theme === "dark"));
+    systemBtn?.setAttribute("aria-pressed", String(isSystem));
   }
 
   document.addEventListener("DOMContentLoaded", () => init());

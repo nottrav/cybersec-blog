@@ -2,6 +2,8 @@
 title: "The Convenience Trap (Part 2): Where We Lose Privacy Without Noticing"
 description: "Examining hidden data collection in apps, social login, and everyday digital choices."
 tags:
+  - Privacy
+  - Cybersecurity
   - DCIM Capstone
 series:
   name: "The Convenience Trap"

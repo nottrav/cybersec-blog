@@ -1,6 +1,6 @@
 ---
 title: "Designing My Space Online"
-description: "When I first started building my website, I didn’t realize how much goes into making a space that feels both personal and professional. My goal was to"
+description: "Lessons learned from building my first website, from layout and color choices to navigating WordPress as a beginner."
 tags:
   - DCIM Capstone
 date: 2025-10-16

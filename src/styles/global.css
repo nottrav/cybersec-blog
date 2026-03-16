@@ -79,6 +79,7 @@ article {
 
 html #back-to-top {
   @apply opacity-0 pointer-events-none;
+  transition: opacity 300ms ease;
 }
 
 html.scrolled #back-to-top {
