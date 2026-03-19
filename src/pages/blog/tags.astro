@@ -44,7 +44,7 @@ const totalPosts = posts.length;
         {tags.map((tag) => (
           <a
             href={`/blog/tag/${tag.slug}`}
-            class="tag-card group relative rounded-lg border border-black/15 dark:border-white/20 px-4 py-4 no-underline transition-all duration-300 ease-in-out hover:border-black/30 dark:hover:border-white/40 hover:bg-black/5 dark:hover:bg-white/5 hover:-translate-y-0.5 hover:shadow-sm overflow-hidden"
+            class="tag-card group relative rounded-lg border border-black/15 dark:border-white/20 px-4 py-4 no-underline transition-all duration-300 ease-in-out hover:border-[var(--accent-muted)] hover:bg-[var(--accent-subtle)] hover:-translate-y-0.5 hover:shadow-sm overflow-hidden"
           >
             <div class="scan-line absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div class="flex flex-col gap-1.5">
@@ -58,7 +58,7 @@ const totalPosts = posts.length;
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              class="absolute top-1/2 right-3 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current opacity-0 group-hover:opacity-100 transition-all duration-300"
+              class="tag-arrow absolute top-1/2 right-3 -translate-y-1/2 size-4 stroke-2 fill-none stroke-current opacity-0 group-hover:opacity-100 transition-all duration-300"
             >
               <line x1="5" y1="12" x2="19" y2="12" class="translate-x-3 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out" />
               <polyline points="12 5 19 12 12 19" class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />
@@ -102,5 +102,9 @@ const totalPosts = posts.length;
   @keyframes scan {
     0% { transform: translateY(0); }
     100% { transform: translateY(50%); }
+  }
+
+  .tag-card:hover .tag-arrow {
+    stroke: var(--accent);
   }
 </style>

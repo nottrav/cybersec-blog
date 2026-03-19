@@ -30,15 +30,15 @@ const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
     {prev ? (
       <a
         href={`/blog/${prev.slug}`}
-        class="series-link group flex flex-col gap-1 px-4 py-3 no-underline border-r border-black/10 dark:border-white/10 hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors duration-200"
+        class="series-link group flex flex-col gap-1 px-4 py-3 no-underline border-r border-black/10 dark:border-white/10 hover:bg-[var(--accent-subtle)] transition-colors duration-200"
       >
-        <span class="text-[11px] uppercase tracking-wider text-black/35 dark:text-white/35 flex items-center gap-1">
+        <span class="series-label text-[11px] uppercase tracking-wider text-black/35 dark:text-white/35 flex items-center gap-1 transition-colors duration-200">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3">
             <polyline points="15 18 9 12 15 6" />
           </svg>
           Previous
         </span>
-        <span class="text-sm text-black/70 dark:text-white/70 group-hover:text-black dark:group-hover:text-white transition-colors duration-200 line-clamp-1">
+        <span class="series-title text-sm text-black/70 dark:text-white/70 transition-colors duration-200 line-clamp-1">
           Part {prev.data.series!.order}: {prev.data.title}
         </span>
       </a>
@@ -49,15 +49,15 @@ const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
     {next ? (
       <a
         href={`/blog/${next.slug}`}
-        class="series-link group flex flex-col gap-1 px-4 py-3 no-underline text-right hover:bg-black/[0.03] dark:hover:bg-white/[0.03] transition-colors duration-200"
+        class="series-link group flex flex-col gap-1 px-4 py-3 no-underline text-right hover:bg-[var(--accent-subtle)] transition-colors duration-200"
       >
-        <span class="text-[11px] uppercase tracking-wider text-black/35 dark:text-white/35 flex items-center justify-end gap-1">
+        <span class="series-label text-[11px] uppercase tracking-wider text-black/35 dark:text-white/35 flex items-center justify-end gap-1 transition-colors duration-200">
           Next
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3">
             <polyline points="9 18 15 12 9 6" />
           </svg>
         </span>
-        <span class="text-sm text-black/70 dark:text-white/70 group-hover:text-black dark:group-hover:text-white transition-colors duration-200 line-clamp-1">
+        <span class="series-title text-sm text-black/70 dark:text-white/70 transition-colors duration-200 line-clamp-1">
           Part {next.data.series!.order}: {next.data.title}
         </span>
       </a>
@@ -66,3 +66,12 @@ const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
     )}
   </div>
 </nav>
+
+<style>
+  .series-link:hover .series-title {
+    color: var(--accent);
+  }
+  .series-link:hover .series-label {
+    color: var(--accent-muted);
+  }
+</style>

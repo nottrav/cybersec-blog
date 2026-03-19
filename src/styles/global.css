@@ -1,15 +1,29 @@
+@import "@fontsource-variable/instrument-sans";
+@import "@fontsource/lora";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import "@fontsource/inter";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/lora";
+/* Accent color system: Slate Blue */
+:root {
+  --accent: oklch(45% 0.12 250);
+  --accent-hover: oklch(38% 0.15 250);
+  --accent-muted: oklch(45% 0.08 250);
+  --accent-subtle: oklch(45% 0.12 250 / 0.1);
+}
+
+.dark {
+  --accent: oklch(68% 0.12 250);
+  --accent-hover: oklch(75% 0.15 250);
+  --accent-muted: oklch(68% 0.08 250);
+  --accent-subtle: oklch(68% 0.12 250 / 0.15);
+}
 
 html {
   overflow-y: scroll;
   color-scheme: light;
-  font-size: 18px;
+  font-size: 16px;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
@@ -63,8 +77,8 @@ article {
     @apply transition-colors duration-300 ease-in-out;
   }
   article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/25 dark:decoration-white/50;
+    color: var(--accent);
+    text-decoration-color: var(--accent-muted);
   }
 }
 
@@ -84,4 +98,24 @@ html #back-to-top {
 
 html.scrolled #back-to-top {
   @apply opacity-100 pointer-events-auto;
+}
+
+/* Typography: Heading line-height */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
+
+/* Typography: Dark mode body text needs more breathing room */
+html.dark article {
+  line-height: 1.7;
+}
+
+/* Typography: Hero text fluid sizing */
+.text-hero {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+}
+
+/* Typography: Tighter tracking for display text */
+.tracking-tight {
+  letter-spacing: -0.02em;
 }

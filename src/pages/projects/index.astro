@@ -17,12 +17,12 @@ const listProjects = featuredProjects.length > 0 ? otherProjects : projects;
 <PageLayout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
     <div class="space-y-10">
-      <div class="animate font-semibold text-black dark:text-white">
+      <h1 class="animate text-2xl font-semibold tracking-tight text-black dark:text-white">
         Projects
-      </div>
+      </h1>
       {featuredProjects.length > 0 && (
         <section class="animate space-y-4">
-          <h2 class="font-semibold text-black dark:text-white">Featured</h2>
+          <h2 class="text-lg font-semibold text-black dark:text-white">Featured</h2>
           <ul class="flex flex-col gap-4">
             {featuredProjects.map((project) => (
               <li>
@@ -35,7 +35,7 @@ const listProjects = featuredProjects.length > 0 ? otherProjects : projects;
       {listProjects.length > 0 && (
         <section class="animate space-y-4">
           {featuredProjects.length > 0 && (
-            <h2 class="font-semibold text-black dark:text-white">More Projects</h2>
+            <h2 class="text-lg font-semibold text-black dark:text-white">More Projects</h2>
           )}
           <ul class="flex flex-col gap-4">
             {listProjects.map((project) => (

@@ -48,7 +48,7 @@ const seriesPosts = post.data.series
           {readingTime(post.body)}
         </div>
       </div>
-      <h1 class="animate text-2xl font-semibold text-black dark:text-white">
+      <h1 class="animate text-3xl font-semibold tracking-tight text-black dark:text-white">
         {post.data.title}
       </h1>
       {(tags.length > 0 || post.data.series) && (
@@ -61,7 +61,7 @@ const seriesPosts = post.data.series
           {tags.map((tag) => (
             <a
               href={`/blog/tag/${tagToSlug(tag)}`}
-              class="no-underline text-xs rounded-md px-2 py-1 border border-black/15 dark:border-white/20 hover:border-black/30 dark:hover:border-white/40 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5 hover:scale-105 transition-all duration-200"
+              class="tag-link no-underline text-xs rounded-md px-2 py-1 border border-black/15 dark:border-white/20 hover:border-[var(--accent-muted)] hover:bg-[var(--accent-subtle)] hover:scale-105 transition-all duration-200"
             >
               {tag}
             </a>
@@ -82,3 +82,9 @@ const seriesPosts = post.data.series
     )}
   </Container>
 </PageLayout>
+
+<style>
+  .tag-link:hover {
+    color: var(--accent);
+  }
+</style>

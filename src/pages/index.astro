@@ -36,9 +36,14 @@ const connectLinks = [
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <h4 class="animate font-semibold text-black dark:text-white">
-      Hi, I'm Travis
-    </h4>
+    <div class="space-y-1 mb-8">
+      <h1 class="animate text-hero font-semibold tracking-tight text-black dark:text-white">
+        Travis McGhee
+      </h1>
+      <p class="animate text-black/60 dark:text-white/60">
+        Cybersecurity · Privacy · IT
+      </p>
+    </div>
     <div class="space-y-16">
       <section>
         <article class="space-y-4 max-w-2xl">
@@ -56,9 +61,9 @@ const connectLinks = [
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
+          <h2 class="text-xl font-semibold text-black dark:text-white">
             Featured projects
-          </h5>
+          </h2>
           <Link href="/projects">
             See all projects
           </Link>
@@ -74,9 +79,9 @@ const connectLinks = [
 
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">
+          <h2 class="text-xl font-semibold text-black dark:text-white">
             Latest posts
-          </h5>
+          </h2>
           <Link href="/blog">
             See all posts
           </Link>
@@ -91,9 +96,9 @@ const connectLinks = [
       </section>
 
       <section class="animate space-y-4">
-        <h5 class="font-semibold text-black dark:text-white">
+        <h2 class="text-xl font-semibold text-black dark:text-white">
           Let's Connect
-        </h5>
+        </h2>
         <article>
           <p>
             If you want to connect, collaborate, or discuss cybersecurity, reach out

@@ -22,7 +22,7 @@ const currentYear = new Date().getFullYear();
             href="https://github.com/markhorn-dev/astro-nano"
             target="_blank"
             rel="noopener noreferrer"
-            class="underline underline-offset-4 hover:text-black dark:hover:text-white transition-colors duration-300 ease-in-out"
+            class="footer-link underline underline-offset-4 transition-colors duration-300 ease-in-out"
           >
             Astro Nano
           </a>
@@ -46,7 +46,7 @@ const currentYear = new Date().getFullYear();
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"
+            class="icon-hover transition-colors duration-300 ease-in-out"
           >
             <path d="M4 11a9 9 0 0 1 9 9"></path>
             <path d="M4 4a16 16 0 0 1 16 16"></path>
@@ -70,7 +70,7 @@ const currentYear = new Date().getFullYear();
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"
+            class="icon-hover transition-colors duration-300 ease-in-out"
           >
             <circle cx="12" cy="12" r="5"></circle>
             <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -99,7 +99,7 @@ const currentYear = new Date().getFullYear();
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"
+            class="icon-hover transition-colors duration-300 ease-in-out"
           >
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
           </svg>
@@ -120,7 +120,7 @@ const currentYear = new Date().getFullYear();
             stroke-width="1.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="group-hover:stroke-black group-hover:dark:stroke-white transition-colors duration-300 ease-in-out"
+            class="icon-hover transition-colors duration-300 ease-in-out"
           >
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>
@@ -132,11 +132,14 @@ const currentYear = new Date().getFullYear();
   </Container>
 <style>
   .theme-active {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: var(--accent-subtle);
     border-radius: 9999px;
   }
-  :global(.dark) .theme-active {
-    background-color: rgba(255, 255, 255, 0.1);
+  .footer-link:hover {
+    color: var(--accent);
+  }
+  .group:hover .icon-hover {
+    stroke: var(--accent);
   }
 </style>
 </footer>
