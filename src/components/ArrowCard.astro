@@ -17,17 +17,17 @@ const tags = showTags && entry.collection === "blog"
 const cardClasses = cn(
   "arrow-card relative group flex flex-nowrap rounded-lg border border-black/15 dark:border-white/20 hover:bg-[var(--accent-subtle)] hover:border-[var(--accent-muted)] hover:text-black dark:hover:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 ease-in-out",
   hero 
-    ? "py-5 px-6 pr-12 border-l-4 border-l-[var(--accent)] bg-[var(--accent-subtle)]/50" 
+    ? "py-5 px-6 pr-12 bg-[var(--accent-subtle)]/60 shadow-sm" 
     : "py-3 px-4 pr-10",
-  featured && !hero && "border-l-2 border-l-[var(--accent)]"
+  featured && !hero && "bg-[var(--accent-subtle)]/30"
 );
 
 const cardDivClasses = cn(
   "arrow-card relative group rounded-lg border border-black/15 dark:border-white/20 hover:bg-[var(--accent-subtle)] hover:border-[var(--accent-muted)] hover:text-black dark:hover:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 ease-in-out",
   hero 
-    ? "py-5 px-6 pr-12 border-l-4 border-l-[var(--accent)] bg-[var(--accent-subtle)]/50" 
+    ? "py-5 px-6 pr-12 bg-[var(--accent-subtle)]/60 shadow-sm" 
     : "py-3 px-4 pr-10",
-  featured && !hero && "border-l-2 border-l-[var(--accent)]"
+  featured && !hero && "bg-[var(--accent-subtle)]/30"
 );
 
 const titleClasses = cn(

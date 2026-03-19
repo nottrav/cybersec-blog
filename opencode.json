@@ -1,0 +1,8 @@
+{
+  "mcp": {
+    "Astro Docs": {
+      "type": "remote",
+      "url": "https://mcp.docs.astro.build/mcp"
+    }
+  }
+}
