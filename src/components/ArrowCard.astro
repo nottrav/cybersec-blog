@@ -6,21 +6,38 @@ type Props = {
   entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
   showTags?: boolean;
   featured?: boolean;
+  hero?: boolean;
 }
 
-const { entry, showTags = true, featured = false } = Astro.props;
+const { entry, showTags = true, featured = false, hero = false } = Astro.props;
 const tags = showTags && entry.collection === "blog"
   ? getDisplayTags(entry.data.tags, 2)
   : [];
 
 const cardClasses = cn(
-  "arrow-card relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg border border-black/15 dark:border-white/20 hover:bg-[var(--accent-subtle)] hover:border-[var(--accent-muted)] hover:text-black dark:hover:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 ease-in-out",
-  featured && "border-l-2 border-l-[var(--accent)]"
+  "arrow-card relative group flex flex-nowrap rounded-lg border border-black/15 dark:border-white/20 hover:bg-[var(--accent-subtle)] hover:border-[var(--accent-muted)] hover:text-black dark:hover:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 ease-in-out",
+  hero 
+    ? "py-5 px-6 pr-12 border-l-4 border-l-[var(--accent)] bg-[var(--accent-subtle)]/50" 
+    : "py-3 px-4 pr-10",
+  featured && !hero && "border-l-2 border-l-[var(--accent)]"
 );
 
 const cardDivClasses = cn(
-  "arrow-card relative group py-3 px-4 pr-10 rounded-lg border border-black/15 dark:border-white/20 hover:bg-[var(--accent-subtle)] hover:border-[var(--accent-muted)] hover:text-black dark:hover:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 ease-in-out",
-  featured && "border-l-2 border-l-[var(--accent)]"
+  "arrow-card relative group rounded-lg border border-black/15 dark:border-white/20 hover:bg-[var(--accent-subtle)] hover:border-[var(--accent-muted)] hover:text-black dark:hover:text-white hover:-translate-y-0.5 hover:shadow-sm transition-all duration-300 ease-in-out",
+  hero 
+    ? "py-5 px-6 pr-12 border-l-4 border-l-[var(--accent)] bg-[var(--accent-subtle)]/50" 
+    : "py-3 px-4 pr-10",
+  featured && !hero && "border-l-2 border-l-[var(--accent)]"
+);
+
+const titleClasses = cn(
+  "font-semibold",
+  hero ? "text-xl" : "text-lg truncate"
+);
+
+const descClasses = cn(
+  "leading-snug text-black/60 dark:text-white/60 mt-0.5",
+  hero ? "text-base" : "text-sm line-clamp-2"
 );
 ---
 
@@ -30,17 +47,20 @@ const cardDivClasses = cn(
     class={cardClasses}
   >
     <div class="flex flex-col flex-1 min-w-0">
-      <div class="text-lg font-semibold truncate">
+      <div class={titleClasses}>
         {entry.data.title}
       </div>
-      <div class="text-sm leading-snug text-black/60 dark:text-white/60 line-clamp-2 mt-0.5">
+      <div class={descClasses}>
         {entry.data.description}
       </div>
     </div>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      class="arrow-icon absolute top-1/2 right-2 -translate-y-1/2 size-5 stroke-2 fill-none stroke-current transition-colors duration-300"
+      class={cn(
+        "arrow-icon absolute top-1/2 -translate-y-1/2 stroke-2 fill-none stroke-current transition-colors duration-300",
+        hero ? "right-4 size-6" : "right-2 size-5"
+      )}
     >
       <line x1="5" y1="12" x2="19" y2="12" class="translate-x-3 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out" />
       <polyline points="12 5 19 12 12 19" class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />
@@ -56,10 +76,10 @@ const cardDivClasses = cn(
       aria-label={entry.data.title}
     ></a>
     <div class="flex flex-col flex-1 min-w-0">
-      <div class="text-lg font-semibold truncate">
+      <div class={titleClasses}>
         {entry.data.title}
       </div>
-      <div class="text-sm leading-snug text-black/60 dark:text-white/60 line-clamp-2 mt-0.5">
+      <div class={descClasses}>
         {entry.data.description}
       </div>
       <div class="relative z-10 flex flex-wrap gap-1.5 mt-2">
@@ -76,7 +96,10 @@ const cardDivClasses = cn(
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      class="arrow-icon absolute top-1/2 right-2 -translate-y-1/2 size-5 stroke-2 fill-none stroke-current transition-colors duration-300"
+      class={cn(
+        "arrow-icon absolute top-1/2 -translate-y-1/2 stroke-2 fill-none stroke-current transition-colors duration-300",
+        hero ? "right-4 size-6" : "right-2 size-5"
+      )}
     >
       <line x1="5" y1="12" x2="19" y2="12" class="translate-x-3 group-hover:translate-x-0 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out" />
       <polyline points="12 5 19 12 12 19" class="-translate-x-1 group-hover:translate-x-0 transition-transform duration-300 ease-in-out" />

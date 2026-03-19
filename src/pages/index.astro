@@ -37,7 +37,8 @@ const connectLinks = [
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <div class="space-y-1 mb-8">
+    {/* Hero Section — more breathing room */}
+    <div class="space-y-1 mb-12">
       <h1 class="animate text-hero font-semibold tracking-tight text-black dark:text-white">
         Travis McGhee
       </h1>
@@ -45,91 +46,102 @@ const connectLinks = [
         Cybersecurity · Privacy · IT
       </p>
     </div>
-    <div class="space-y-16">
-      <section>
-        <article class="space-y-4 max-w-2xl border-l-2 border-black/10 dark:border-white/10 pl-4">
-          <p class="animate">
-            I'm a recent Rutgers grad with a degree in Information Technology, a concentration in Cybersecurity, and a minor in Digital Communication. I write here about cybersecurity and privacy, mostly real risks, common scam patterns, and practical ways to build safer habits online.
-          </p>
-          <p class="animate">
-            The investigative side of security is what got me hooked. I like digging into how systems work and figuring out where they break down. My background covers networking, security, data analytics, and privacy, and I've applied that through projects in Python, Java, and tools like Tableau. At home I run a Raspberry Pi with Pi-hole to experiment with DNS filtering and keep an eye on what's actually moving across my network.
-          </p>
-          <p class="animate">
-            I'm currently looking for entry-level roles in cybersecurity or IT. If my work looks like a good fit for what your team is building, I'd love to hear from you.
-          </p>
-        </article>
-        <div class="animate mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-black/50 dark:text-white/50">
-          <span class="flex items-center gap-1.5">
-            <span class="text-[var(--accent)]">&gt;</span> Security & Privacy
-          </span>
-          <span class="flex items-center gap-1.5">
-            <span class="text-[var(--accent)]">&gt;</span> DNS & Networking
-          </span>
-          <span class="flex items-center gap-1.5">
-            <span class="text-[var(--accent)]">&gt;</span> Data Analytics
-          </span>
-          <span class="flex items-center gap-1.5">
-            <span class="text-[var(--accent)]">&gt;</span> Digital Communication
-          </span>
-        </div>
-      </section>
 
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h2 class="text-xl font-semibold text-black dark:text-white">
-            Featured projects
-          </h2>
-          <Link href="/projects">
-            See all projects
-          </Link>
-        </div>
-        <ul class="flex flex-col gap-4">
-          {projects.map(project => (
-            <li>
-              <ArrowCard entry={project} showTags={false} featured={true} />
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="animate space-y-4">
-        <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h2 class="text-xl font-semibold text-black dark:text-white">
-            Latest posts
-          </h2>
-          <Link href="/blog">
-            See all posts
-          </Link>
-        </div>
-        <div class="flex flex-col">
-          {blog.map(post => (
-            <PostListItem entry={post} />
-          ))}
-        </div>
-      </section>
-
-      <section class="animate space-y-4">
-        <h2 class="text-xl font-semibold text-black dark:text-white">
-          Connect
-        </h2>
-        <p class="text-black/60 dark:text-white/60">
-          Find me on these platforms.
+    {/* Bio Section — strengthened border, tighter paragraphs, CTA callout */}
+    <section class="mb-16">
+      <article class="space-y-3 max-w-2xl border-l-2 border-black/20 dark:border-white/20 pl-4">
+        <p class="animate">
+          I'm a recent Rutgers grad with a degree in Information Technology, a concentration in Cybersecurity, and a minor in Digital Communication. I write here about cybersecurity and privacy, mostly real risks, common scam patterns, and practical ways to build safer habits online.
         </p>
-        <ul class="flex flex-wrap gap-2 font-mono text-sm">
-          {connectLinks.map((item, index) => (
-            <li class="flex gap-x-2 text-nowrap">
-              <Link
-                href={item.href}
-                external={item.external}
-                aria-label={item.external ? `${SITE.NAME} on ${item.label}` : `Email ${SITE.NAME}`}
-              >
-                {item.label}
-              </Link>
-              {index < connectLinks.length - 1 && <span class="text-black/30 dark:text-white/30">/</span>}
-            </li>
-          ))}
-        </ul>
-      </section>
-    </div>
+        <p class="animate">
+          The investigative side of security is what got me hooked. I like digging into how systems work and figuring out where they break down. My background covers networking, security, data analytics, and privacy, and I've applied that through projects in Python, Java, and tools like Tableau. At home I run a Raspberry Pi with Pi-hole to experiment with DNS filtering and keep an eye on what's actually moving across my network.
+        </p>
+        <p class="animate px-3 py-2.5 -ml-4 border-l-2 border-l-[var(--accent)] bg-[var(--accent-subtle)] rounded-r-md text-black/80 dark:text-white/85">
+          I'm currently looking for entry-level roles in cybersecurity or IT. If my work looks like a good fit for what your team is building, I'd love to hear from you.
+        </p>
+      </article>
+      <div class="animate mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-mono text-black/50 dark:text-white/50">
+        <span class="flex items-center gap-1.5">
+          <span class="text-[var(--accent)]">&gt;</span> Security & Privacy
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="text-[var(--accent)]">&gt;</span> DNS & Networking
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="text-[var(--accent)]">&gt;</span> Data Analytics
+        </span>
+        <span class="flex items-center gap-1.5">
+          <span class="text-[var(--accent)]">&gt;</span> Digital Communication
+        </span>
+      </div>
+    </section>
+
+    {/* Featured Projects — hero treatment for first, supporting grid for rest */}
+    <section class="animate mb-12">
+      <div class="flex flex-wrap gap-y-2 items-center justify-between mb-6">
+        <h2 class="text-xl font-semibold text-black dark:text-white">
+          Featured projects
+        </h2>
+        <Link href="/projects">
+          See all projects
+        </Link>
+      </div>
+      {projects.length > 0 && (
+        <div class="space-y-4">
+          {/* Hero project */}
+          <ArrowCard entry={projects[0]} showTags={false} hero={true} />
+          
+          {/* Supporting projects in 2-column grid */}
+          {projects.length > 1 && (
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {projects.slice(1).map(project => (
+                <ArrowCard entry={project} showTags={false} featured={true} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </section>
+
+    {/* Latest Posts — tighter spacing, secondary content */}
+    <section class="animate mb-12">
+      <div class="flex flex-wrap gap-y-2 items-center justify-between mb-4">
+        <h2 class="text-xl font-semibold text-black dark:text-white">
+          Latest posts
+        </h2>
+        <Link href="/blog">
+          See all posts
+        </Link>
+      </div>
+      <div class="flex flex-col">
+        {blog.map(post => (
+          <PostListItem entry={post} />
+        ))}
+      </div>
+    </section>
+
+    {/* Connect — minor section */}
+    <section class="animate">
+      <h2 class="text-xl font-semibold text-black dark:text-white mb-3">
+        Connect
+      </h2>
+      <p class="text-black/60 dark:text-white/60 mb-3">
+        Find me on these platforms.
+      </p>
+      <ul class="flex flex-wrap gap-2 font-mono text-sm">
+        {connectLinks.map((item, index) => (
+          <li class="flex gap-x-2 text-nowrap">
+            <Link
+              href={item.href}
+              external={item.external}
+              aria-label={item.external ? `${SITE.NAME} on ${item.label}` : `Email ${SITE.NAME}`}
+            >
+              {item.label}
+            </Link>
+            {index < connectLinks.length - 1 && <span class="text-black/30 dark:text-white/30">/</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
   </Container>
 </PageLayout>
