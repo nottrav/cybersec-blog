@@ -43,7 +43,7 @@ const descClasses = cn(
 
 {tags.length === 0 ? (
   <a
-    href={`/${entry.collection}/${entry.slug}`}
+    href={`/${entry.collection}/${entry.id}`}
     class={cardClasses}
   >
     <div class="flex flex-col flex-1 min-w-0">
@@ -71,7 +71,7 @@ const descClasses = cn(
     class={cardDivClasses}
   >
     <a
-      href={`/${entry.collection}/${entry.slug}`}
+      href={`/${entry.collection}/${entry.id}`}
       class="absolute inset-0 z-0"
       aria-label={entry.data.title}
     ></a>

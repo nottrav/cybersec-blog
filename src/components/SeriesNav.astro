@@ -9,7 +9,7 @@ type Props = {
 const { currentPost, seriesPosts } = Astro.props;
 const series = currentPost.data.series!;
 const sorted = seriesPosts.sort((a, b) => a.data.series!.order - b.data.series!.order);
-const currentIndex = sorted.findIndex((p) => p.slug === currentPost.slug);
+const currentIndex = sorted.findIndex((p) => p.id === currentPost.id);
 const prev = currentIndex > 0 ? sorted[currentIndex - 1] : null;
 const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
 ---
@@ -29,7 +29,7 @@ const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
   <div class="grid grid-cols-2">
     {prev ? (
       <a
-        href={`/blog/${prev.slug}`}
+        href={`/blog/${prev.id}`}
         class="series-link group flex flex-col gap-1 px-4 py-3 no-underline border-r border-black/10 dark:border-white/10 hover:bg-[var(--accent-subtle)] transition-colors duration-200"
       >
         <span class="series-label text-[11px] uppercase tracking-wider text-black/50 dark:text-white/50 flex items-center gap-1 transition-colors duration-200">
@@ -48,7 +48,7 @@ const next = currentIndex < sorted.length - 1 ? sorted[currentIndex + 1] : null;
 
     {next ? (
       <a
-        href={`/blog/${next.slug}`}
+        href={`/blog/${next.id}`}
         class="series-link group flex flex-col gap-1 px-4 py-3 no-underline text-right hover:bg-[var(--accent-subtle)] transition-colors duration-200"
       >
         <span class="series-label text-[11px] uppercase tracking-wider text-black/50 dark:text-white/50 flex items-center justify-end gap-1 transition-colors duration-200">
