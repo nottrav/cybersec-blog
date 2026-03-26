@@ -5,12 +5,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-pnpm dev            # dev server at localhost:4321
-pnpm build          # tsc + astro build to ./dist/
-pnpm preview        # preview production build
-pnpm lint           # ESLint
-pnpm lint:fix       # auto-fix lint issues
-pnpm run astro ...  # Astro CLI (e.g. astro check, astro add)
+bun dev            # dev server at localhost:4321
+bun build          # tsc + astro build to ./dist/
+bun preview        # preview production build
+bun lint           # ESLint
+bun lint:fix       # auto-fix lint issues
+bun run astro ...  # Astro CLI (e.g. astro check, astro add)
 ```
 
 ## Architecture

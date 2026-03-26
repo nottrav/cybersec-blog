@@ -52,23 +52,6 @@ body {
   @apply flex flex-col;
   @apply bg-zinc-100 dark:bg-zinc-900;
   @apply text-black/65 dark:text-white/75;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0, 0, 0, 0.02) 3px,
-    rgba(0, 0, 0, 0.02) 4px
-  );
-}
-
-html.dark body {
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(255, 255, 255, 0.015) 3px,
-    rgba(255, 255, 255, 0.015) 4px
-  );
 }
 
 header {

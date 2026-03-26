@@ -33,11 +33,5 @@
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.4.2"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "sharp"
-    ]
   }
 }
